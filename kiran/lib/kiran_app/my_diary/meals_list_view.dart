@@ -165,11 +165,11 @@ class MealsView extends StatelessWidget {
                               mealsListData!.titleTxt,
                               textAlign: TextAlign.center,
                               style: const TextStyle(
-                                fontFamily: FitnessAppTheme.fontName,
+                                fontFamily: KiranAppTheme.fontName,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16,
                                 letterSpacing: 0.2,
-                                color: FitnessAppTheme.white,
+                                color: KiranAppTheme.white,
                               ),
                             ),
                             Expanded(
@@ -183,11 +183,11 @@ class MealsView extends StatelessWidget {
                                     Text(
                                       mealsListData!.meals!.join('\n'),
                                       style: const TextStyle(
-                                        fontFamily: FitnessAppTheme.fontName,
+                                        fontFamily: KiranAppTheme.fontName,
                                         fontWeight: FontWeight.w500,
                                         fontSize: 10,
                                         letterSpacing: 0.2,
-                                        color: FitnessAppTheme.white,
+                                        color: KiranAppTheme.white,
                                       ),
                                     ),
                                   ],
@@ -203,11 +203,11 @@ class MealsView extends StatelessWidget {
                                         mealsListData!.kacl.toString(),
                                         textAlign: TextAlign.center,
                                         style: const TextStyle(
-                                          fontFamily: FitnessAppTheme.fontName,
+                                          fontFamily: KiranAppTheme.fontName,
                                           fontWeight: FontWeight.w500,
                                           fontSize: 24,
                                           letterSpacing: 0.2,
-                                          color: FitnessAppTheme.white,
+                                          color: KiranAppTheme.white,
                                         ),
                                       ),
                                       const Padding(
@@ -216,12 +216,11 @@ class MealsView extends StatelessWidget {
                                         child: Text(
                                           'kcal',
                                           style: TextStyle(
-                                            fontFamily:
-                                                FitnessAppTheme.fontName,
+                                            fontFamily: KiranAppTheme.fontName,
                                             fontWeight: FontWeight.w500,
                                             fontSize: 10,
                                             letterSpacing: 0.2,
-                                            color: FitnessAppTheme.white,
+                                            color: KiranAppTheme.white,
                                           ),
                                         ),
                                       ),
@@ -229,11 +228,11 @@ class MealsView extends StatelessWidget {
                                   )
                                 : Container(
                                     decoration: BoxDecoration(
-                                      color: FitnessAppTheme.nearlyWhite,
+                                      color: KiranAppTheme.nearlyWhite,
                                       shape: BoxShape.circle,
                                       boxShadow: <BoxShadow>[
                                         BoxShadow(
-                                          color: FitnessAppTheme.nearlyBlack
+                                          color: KiranAppTheme.nearlyBlack
                                               .withOpacity(0.4),
                                           offset: const Offset(
                                             8.0,
@@ -266,7 +265,7 @@ class MealsView extends StatelessWidget {
                       width: 84,
                       height: 84,
                       decoration: BoxDecoration(
-                        color: FitnessAppTheme.nearlyWhite.withOpacity(0.2),
+                        color: KiranAppTheme.nearlyWhite.withOpacity(0.2),
                         shape: BoxShape.circle,
                       ),
                     ),

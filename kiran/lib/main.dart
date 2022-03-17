@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
         textTheme: AppTheme.textTheme,
         platform: TargetPlatform.iOS,
       ),
-      home: const FitnessAppHomeScreen(),
+      home: const KiranAppHomeScreen(),
     );
   }
 }

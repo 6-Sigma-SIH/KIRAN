@@ -5,21 +5,21 @@ import 'bottom_navigation_view/bottom_bar_view.dart';
 import 'kiran_app_theme.dart';
 import 'my_diary/my_diary_screen.dart';
 
-class FitnessAppHomeScreen extends StatefulWidget {
-  const FitnessAppHomeScreen({Key? key}) : super(key: key);
+class KiranAppHomeScreen extends StatefulWidget {
+  const KiranAppHomeScreen({Key? key}) : super(key: key);
 
   @override
-  _FitnessAppHomeScreenState createState() => _FitnessAppHomeScreenState();
+  _KiranAppHomeScreenState createState() => _KiranAppHomeScreenState();
 }
 
-class _FitnessAppHomeScreenState extends State<FitnessAppHomeScreen>
+class _KiranAppHomeScreenState extends State<KiranAppHomeScreen>
     with TickerProviderStateMixin {
   AnimationController? animationController;
 
   List<TabIconData> tabIconsList = TabIconData.tabIconsList;
 
   Widget tabBody = Container(
-    color: FitnessAppTheme.background,
+    color: KiranAppTheme.background,
   );
 
   @override
@@ -48,7 +48,7 @@ class _FitnessAppHomeScreenState extends State<FitnessAppHomeScreen>
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: FitnessAppTheme.background,
+      color: KiranAppTheme.background,
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: FutureBuilder<bool>(

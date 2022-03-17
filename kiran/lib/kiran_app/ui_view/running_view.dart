@@ -30,7 +30,7 @@ class RunningView extends StatelessWidget {
                         padding: const EdgeInsets.only(top: 16, bottom: 16),
                         child: Container(
                           decoration: BoxDecoration(
-                            color: FitnessAppTheme.white,
+                            color: KiranAppTheme.white,
                             borderRadius: const BorderRadius.only(
                                 topLeft: Radius.circular(8.0),
                                 bottomLeft: Radius.circular(8.0),
@@ -38,7 +38,7 @@ class RunningView extends StatelessWidget {
                                 topRight: Radius.circular(8.0)),
                             boxShadow: <BoxShadow>[
                               BoxShadow(
-                                  color: FitnessAppTheme.grey.withOpacity(0.4),
+                                  color: KiranAppTheme.grey.withOpacity(0.4),
                                   offset: const Offset(1.1, 1.1),
                                   blurRadius: 10.0),
                             ],
@@ -73,13 +73,11 @@ class RunningView extends StatelessWidget {
                                           "You're doing great!",
                                           textAlign: TextAlign.left,
                                           style: TextStyle(
-                                            fontFamily:
-                                                FitnessAppTheme.fontName,
+                                            fontFamily: KiranAppTheme.fontName,
                                             fontWeight: FontWeight.w500,
                                             fontSize: 14,
                                             letterSpacing: 0.0,
-                                            color:
-                                                FitnessAppTheme.nearlyDarkBlue,
+                                            color: KiranAppTheme.nearlyDarkBlue,
                                           ),
                                         ),
                                       ),
@@ -96,12 +94,12 @@ class RunningView extends StatelessWidget {
                                       "Keep it up\nand stick to your plan!",
                                       textAlign: TextAlign.left,
                                       style: TextStyle(
-                                        fontFamily: FitnessAppTheme.fontName,
+                                        fontFamily: KiranAppTheme.fontName,
                                         fontWeight: FontWeight.w500,
                                         fontSize: 10,
                                         letterSpacing: 0.0,
-                                        color: FitnessAppTheme.grey
-                                            .withOpacity(0.5),
+                                        color:
+                                            KiranAppTheme.grey.withOpacity(0.5),
                                       ),
                                     ),
                                   ),
