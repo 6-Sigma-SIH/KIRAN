@@ -3,8 +3,8 @@ import 'package:kiran/kiran_app/ui_view/glass_view.dart';
 import 'package:kiran/kiran_app/ui_view/mediterranean_diet_view.dart';
 import 'package:kiran/kiran_app/ui_view/title_view.dart';
 import 'package:kiran/kiran_app/kiran_app_theme.dart';
-import 'package:kiran/kiran_app/my_diary/meals_list_view.dart';
-import 'package:kiran/kiran_app/my_diary/water_view.dart';
+import 'package:kiran/kiran_app/Screening Test/meals_list_view.dart';
+import 'package:kiran/kiran_app/Screening Test/water_view.dart';
 import 'package:flutter/material.dart';
 
 class MyDiaryScreen extends StatefulWidget {
