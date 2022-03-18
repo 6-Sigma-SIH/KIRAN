@@ -128,11 +128,13 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
     );
 
     listViews.add(
-      BodyMeasurementView(
+      TitleView(
+        titleTxt: 'Water',
+        subTxt: 'Aqua SmartBottle',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(
           CurvedAnimation(
             parent: widget.animationController!,
-            curve: const Interval((1 / count) * 5, 1.0,
+            curve: const Interval((1 / count) * 6, 1.0,
                 curve: Curves.fastOutSlowIn),
           ),
         ),
@@ -141,13 +143,11 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
     );
 
     listViews.add(
-      TitleView(
-        titleTxt: 'Water',
-        subTxt: 'Aqua SmartBottle',
+      BodyMeasurementView(
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(
           CurvedAnimation(
             parent: widget.animationController!,
-            curve: const Interval((1 / count) * 6, 1.0,
+            curve: const Interval((1 / count) * 5, 1.0,
                 curve: Curves.fastOutSlowIn),
           ),
         ),
