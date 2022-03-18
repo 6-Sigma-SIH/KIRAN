@@ -3,7 +3,7 @@ import 'package:kiran/kiran_app/training/training_screen.dart';
 import 'package:flutter/material.dart';
 import 'bottom_navigation_view/bottom_bar_view.dart';
 import 'kiran_app_theme.dart';
-import 'my_diary/my_diary_screen.dart';
+import 'my_diary/screening_test_view.dart';
 
 class KiranAppHomeScreen extends StatefulWidget {
   const KiranAppHomeScreen({Key? key}) : super(key: key);

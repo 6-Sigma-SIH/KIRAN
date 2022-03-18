@@ -270,7 +270,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  'My Diary',
+                                  'Screening Test',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                     fontFamily: KiranAppTheme.fontName,
