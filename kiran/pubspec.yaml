@@ -39,7 +39,7 @@ dependencies:
   intl: ^0.17.0
   animations: ^2.0.0
   http: ^0.13.3
-  flutter_login: ^3.0.0
+  flutter_login: ^2.2.1
   url_launcher: ^6.0.10
 
 dev_dependencies:
