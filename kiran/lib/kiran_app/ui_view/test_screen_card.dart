@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_new
+// ignore_for_file: unnecessary_new, prefer_const_constructors
 
 import 'package:kiran/kiran_app/kiran_app_theme.dart';
 import 'package:flutter/material.dart';
@@ -7,8 +7,27 @@ class TestScreenCardView extends StatelessWidget {
   final AnimationController? animationController;
   final Animation<double>? animation;
 
-  const TestScreenCardView({Key? key, this.animationController, this.animation})
-      : super(key: key);
+  var testTitle = "";
+  int score = 0;
+  int questions = 0;
+  int minTime = 0;
+  var testStatus = 0;
+  var lastOpened = "";
+  // last opened date and time
+
+  TestScreenCardView({
+    required this.testTitle,
+    required this.score,
+    required this.questions,
+    required this.minTime,
+    required this.testStatus,
+    required this.lastOpened,
+    this.animationController,
+    this.animation,
+  });
+
+  // const TestScreenCardView({Key? key, this.animationController, this.animation})
+  //     : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +40,12 @@ class TestScreenCardView extends StatelessWidget {
             transform: new Matrix4.translationValues(
                 0.0, 30 * (1.0 - animation!.value), 0.0),
             child: Padding(
-              padding: const EdgeInsets.only(
-                  left: 24, right: 24, top: 16, bottom: 18),
+              padding:
+                  EdgeInsets.only(left: 24, right: 24, top: 16, bottom: 18),
               child: Container(
                 decoration: BoxDecoration(
                   color: KiranAppTheme.white,
-                  borderRadius: const BorderRadius.only(
+                  borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(8.0),
                       bottomLeft: Radius.circular(8.0),
                       bottomRight: Radius.circular(8.0),
@@ -34,24 +53,23 @@ class TestScreenCardView extends StatelessWidget {
                   boxShadow: <BoxShadow>[
                     BoxShadow(
                         color: KiranAppTheme.grey.withOpacity(0.2),
-                        offset: const Offset(1.1, 1.1),
+                        offset: Offset(1.1, 1.1),
                         blurRadius: 10.0),
                   ],
                 ),
                 child: Column(
                   children: <Widget>[
                     Padding(
-                      padding:
-                          const EdgeInsets.only(top: 16, left: 16, right: 24),
+                      padding: EdgeInsets.only(top: 16, left: 16, right: 24),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          const Padding(
+                          Padding(
                             padding:
                                 EdgeInsets.only(left: 4, bottom: 8, top: 16),
                             child: Text(
-                              'Anxiety',
+                              testTitle,
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontFamily: KiranAppTheme.fontName,
@@ -68,12 +86,12 @@ class TestScreenCardView extends StatelessWidget {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.end,
-                                children: const <Widget>[
+                                children: <Widget>[
                                   Padding(
                                     padding:
                                         EdgeInsets.only(left: 4, bottom: 3),
                                     child: Text(
-                                      '206.8',
+                                      '$score',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         fontFamily: KiranAppTheme.fontName,
@@ -87,7 +105,7 @@ class TestScreenCardView extends StatelessWidget {
                                     padding:
                                         EdgeInsets.only(left: 8, bottom: 8),
                                     child: Text(
-                                      'Ibs',
+                                      'out of $score',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         fontFamily: KiranAppTheme.fontName,
@@ -114,10 +132,9 @@ class TestScreenCardView extends StatelessWidget {
                                         size: 16,
                                       ),
                                       Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 4.0),
+                                        padding: EdgeInsets.only(left: 4.0),
                                         child: Text(
-                                          'Today 11:33 AM',
+                                          lastOpened,
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                             fontFamily: KiranAppTheme.fontName,
@@ -131,11 +148,12 @@ class TestScreenCardView extends StatelessWidget {
                                       ),
                                     ],
                                   ),
-                                  const Padding(
+                                  // ignore: prefer_const_constructors
+                                  Padding(
                                     padding:
                                         EdgeInsets.only(top: 4, bottom: 14),
                                     child: Text(
-                                      'InBody SmartScale',
+                                      'Last Opened',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         fontFamily: KiranAppTheme.fontName,
@@ -154,18 +172,18 @@ class TestScreenCardView extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(
+                      padding: EdgeInsets.only(
                           left: 24, right: 24, top: 8, bottom: 8),
                       child: Container(
                         height: 2,
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           color: KiranAppTheme.background,
                           borderRadius: BorderRadius.all(Radius.circular(4.0)),
                         ),
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(
+                      padding: EdgeInsets.only(
                           left: 24, right: 24, top: 8, bottom: 16),
                       child: Row(
                         children: <Widget>[
@@ -174,8 +192,8 @@ class TestScreenCardView extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                const Text(
-                                  '60',
+                                Text(
+                                  '$questions',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontFamily: KiranAppTheme.fontName,
@@ -186,7 +204,7 @@ class TestScreenCardView extends StatelessWidget {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(top: 6),
+                                  padding: EdgeInsets.only(top: 6),
                                   child: Text(
                                     'Questions',
                                     textAlign: TextAlign.center,
@@ -211,8 +229,8 @@ class TestScreenCardView extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: <Widget>[
-                                    const Text(
-                                      '15',
+                                    Text(
+                                      '$minTime',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         fontFamily: KiranAppTheme.fontName,
@@ -223,7 +241,7 @@ class TestScreenCardView extends StatelessWidget {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(top: 6),
+                                      padding: EdgeInsets.only(top: 6),
                                       child: Text(
                                         'minutes',
                                         textAlign: TextAlign.center,
@@ -250,8 +268,8 @@ class TestScreenCardView extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: <Widget>[
-                                    const Text(
-                                      '20%',
+                                    Text(
+                                      '$testStatus %',
                                       style: TextStyle(
                                         fontFamily: KiranAppTheme.fontName,
                                         fontWeight: FontWeight.w500,
@@ -261,9 +279,9 @@ class TestScreenCardView extends StatelessWidget {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(top: 6),
+                                      padding: EdgeInsets.only(top: 6),
                                       child: Text(
-                                        'Body fat',
+                                        'Test Status',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontFamily: KiranAppTheme.fontName,
