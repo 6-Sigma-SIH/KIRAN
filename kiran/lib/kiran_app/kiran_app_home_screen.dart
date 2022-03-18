@@ -1,6 +1,7 @@
 import 'package:kiran/kiran_app/models/tabIcon_data.dart';
 import 'package:kiran/kiran_app/training/training_screen.dart';
 import 'package:flutter/material.dart';
+import '../profile/profile_page.dart';
 import 'bottom_navigation_view/bottom_bar_view.dart';
 import 'kiran_app_theme.dart';
 import 'Screening Test/screening_test_view.dart';
@@ -33,7 +34,7 @@ class _KiranAppHomeScreenState extends State<KiranAppHomeScreen>
       duration: const Duration(milliseconds: 600),
       vsync: this,
     );
-    tabBody = MyDiaryScreen(
+    tabBody = TestingScreen(
       animationController: animationController,
     );
     super.initState();
@@ -92,10 +93,10 @@ class _KiranAppHomeScreenState extends State<KiranAppHomeScreen>
                 }
                 setState(() {
                   tabBody =
-                      MyDiaryScreen(animationController: animationController);
+                      TestingScreen(animationController: animationController);
                 });
               });
-            } else if (index == 1 || index == 3) {
+            } else if (index == 1) {
               animationController?.reverse().then<dynamic>((data) {
                 if (!mounted) {
                   return;
@@ -103,6 +104,15 @@ class _KiranAppHomeScreenState extends State<KiranAppHomeScreen>
                 setState(() {
                   tabBody =
                       TrainingScreen(animationController: animationController);
+                });
+              });
+            } else if (index == 3) {
+              animationController?.reverse().then<dynamic>((data) {
+                if (!mounted) {
+                  return;
+                }
+                setState(() {
+                  tabBody = ProfileScreen();
                 });
               });
             }

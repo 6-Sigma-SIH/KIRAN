@@ -46,10 +46,11 @@ class TestScreenCardView extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: KiranAppTheme.white,
                   borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(8.0),
-                      bottomLeft: Radius.circular(8.0),
-                      bottomRight: Radius.circular(8.0),
-                      topRight: Radius.circular(68.0)),
+                    topLeft: Radius.circular(8.0),
+                    bottomLeft: Radius.circular(8.0),
+                    bottomRight: Radius.circular(8.0),
+                    topRight: Radius.circular(68.0),
+                  ),
                   boxShadow: <BoxShadow>[
                     BoxShadow(
                         color: KiranAppTheme.grey.withOpacity(0.2),

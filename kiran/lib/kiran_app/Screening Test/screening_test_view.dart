@@ -7,15 +7,15 @@ import 'package:kiran/kiran_app/Screening Test/meals_list_view.dart';
 import 'package:kiran/kiran_app/Screening Test/water_view.dart';
 import 'package:flutter/material.dart';
 
-class MyDiaryScreen extends StatefulWidget {
-  const MyDiaryScreen({Key? key, this.animationController}) : super(key: key);
+class TestingScreen extends StatefulWidget {
+  const TestingScreen({Key? key, this.animationController}) : super(key: key);
 
   final AnimationController? animationController;
   @override
-  _MyDiaryScreenState createState() => _MyDiaryScreenState();
+  _TestingScreenState createState() => _TestingScreenState();
 }
 
-class _MyDiaryScreenState extends State<MyDiaryScreen>
+class _TestingScreenState extends State<TestingScreen>
     with TickerProviderStateMixin {
   Animation<double>? topBarAnimation;
 
@@ -103,14 +103,20 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
     // );
 
     listViews.add(
-      TitleView(
-        titleTxt: 'Anxiety',
-        subTxt: 'Start Test',
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController!,
-            curve: const Interval((1 / count) * 4, 1.0,
-                curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController!,
+      TextButton(
+        onPressed: () {
+          Navigator.pushNamed(context, '/');
+        },
+        child: TitleView(
+          titleTxt: 'Anxiety',
+          subTxt: 'Start Test',
+          animation: Tween<double>(begin: 0.0, end: 1.0).animate(
+              CurvedAnimation(
+                  parent: widget.animationController!,
+                  curve: const Interval((1 / count) * 4, 1.0,
+                      curve: Curves.fastOutSlowIn))),
+          animationController: widget.animationController!,
+        ),
       ),
     );
 
@@ -280,7 +286,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
                           children: <Widget>[
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: const EdgeInsets.all(10.0),
                                 child: Text(
                                   'Screening Test',
                                   textAlign: TextAlign.left,
