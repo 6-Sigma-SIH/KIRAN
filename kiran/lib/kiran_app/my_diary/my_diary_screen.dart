@@ -1,4 +1,4 @@
-import 'package:kiran/kiran_app/ui_view/body_measurement.dart';
+import 'package:kiran/kiran_app/ui_view/test_screen_card.dart';
 import 'package:kiran/kiran_app/ui_view/glass_view.dart';
 import 'package:kiran/kiran_app/ui_view/mediterranean_diet_view.dart';
 import 'package:kiran/kiran_app/ui_view/title_view.dart';
@@ -115,7 +115,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
     );
 
     listViews.add(
-      BodyMeasurementView(
+      TestScreenCardView(
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(
           CurvedAnimation(
             parent: widget.animationController!,
@@ -143,7 +143,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
     );
 
     listViews.add(
-      BodyMeasurementView(
+      TestScreenCardView(
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(
           CurvedAnimation(
             parent: widget.animationController!,

@@ -3,12 +3,11 @@
 import 'package:kiran/kiran_app/kiran_app_theme.dart';
 import 'package:flutter/material.dart';
 
-class BodyMeasurementView extends StatelessWidget {
+class TestScreenCardView extends StatelessWidget {
   final AnimationController? animationController;
   final Animation<double>? animation;
 
-  const BodyMeasurementView(
-      {Key? key, this.animationController, this.animation})
+  const TestScreenCardView({Key? key, this.animationController, this.animation})
       : super(key: key);
 
   @override
