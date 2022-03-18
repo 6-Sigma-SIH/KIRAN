@@ -1,5 +1,5 @@
 import 'package:kiran/kiran_app/models/tabIcon_data.dart';
-import 'package:kiran/kiran_app/training/training_screen.dart';
+import 'package:kiran/kiran_app/contact/contact_screen.dart';
 import 'package:flutter/material.dart';
 import '../profile/profile_page.dart';
 import 'bottom_navigation_view/bottom_bar_view.dart';
@@ -86,7 +86,7 @@ class _KiranAppHomeScreenState extends State<KiranAppHomeScreen>
           tabIconsList: tabIconsList,
           addClick: () {},
           changeIndex: (int index) {
-            if (index == 0 || index == 2) {
+            if (index == 0) {
               animationController?.reverse().then<dynamic>((data) {
                 if (!mounted) {
                   return;
@@ -103,7 +103,17 @@ class _KiranAppHomeScreenState extends State<KiranAppHomeScreen>
                 }
                 setState(() {
                   tabBody =
-                      TrainingScreen(animationController: animationController);
+                      ContactScreen(animationController: animationController);
+                });
+              });
+            } else if (index == 2) {
+              animationController?.reverse().then<dynamic>((data) {
+                if (!mounted) {
+                  return;
+                }
+                setState(() {
+                  tabBody =
+                      ContactScreen(animationController: animationController);
                 });
               });
             } else if (index == 3) {
