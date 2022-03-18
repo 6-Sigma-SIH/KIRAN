@@ -52,7 +52,7 @@ class BodyMeasurementView extends StatelessWidget {
                             padding:
                                 EdgeInsets.only(left: 4, bottom: 8, top: 16),
                             child: Text(
-                              'Weight',
+                              'Anxiety',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontFamily: KiranAppTheme.fontName,
@@ -118,7 +118,7 @@ class BodyMeasurementView extends StatelessWidget {
                                         padding:
                                             const EdgeInsets.only(left: 4.0),
                                         child: Text(
-                                          'Today 8:26 AM',
+                                          'Today 11:33 AM',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                             fontFamily: KiranAppTheme.fontName,
@@ -176,7 +176,7 @@ class BodyMeasurementView extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 const Text(
-                                  '185 cm',
+                                  '60',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontFamily: KiranAppTheme.fontName,
@@ -189,7 +189,7 @@ class BodyMeasurementView extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(top: 6),
                                   child: Text(
-                                    'Height',
+                                    'Questions',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       fontFamily: KiranAppTheme.fontName,
@@ -213,7 +213,7 @@ class BodyMeasurementView extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: <Widget>[
                                     const Text(
-                                      '27.3 BMI',
+                                      '15',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         fontFamily: KiranAppTheme.fontName,
@@ -226,7 +226,7 @@ class BodyMeasurementView extends StatelessWidget {
                                     Padding(
                                       padding: const EdgeInsets.only(top: 6),
                                       child: Text(
-                                        'Overweight',
+                                        'minutes',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontFamily: KiranAppTheme.fontName,
