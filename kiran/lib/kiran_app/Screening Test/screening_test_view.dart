@@ -142,17 +142,22 @@ class _TestingScreenState extends State<TestingScreen>
     );
 
     listViews.add(
-      TitleView(
-        titleTxt: 'Depression',
-        subTxt: 'Start Test',
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(
-          CurvedAnimation(
-            parent: widget.animationController!,
-            curve: const Interval((1 / count) * 6, 1.0,
-                curve: Curves.fastOutSlowIn),
+      TextButton(
+        onPressed: () {
+          Navigator.pushNamed(context, '/depression');
+        },
+        child: TitleView(
+          titleTxt: 'Depression',
+          subTxt: 'Start Test',
+          animation: Tween<double>(begin: 0.0, end: 1.0).animate(
+            CurvedAnimation(
+              parent: widget.animationController!,
+              curve: const Interval((1 / count) * 6, 1.0,
+                  curve: Curves.fastOutSlowIn),
+            ),
           ),
+          animationController: widget.animationController!,
         ),
-        animationController: widget.animationController!,
       ),
     );
 
@@ -175,6 +180,44 @@ class _TestingScreenState extends State<TestingScreen>
       ),
     );
 
+    listViews.add(
+      TextButton(
+        onPressed: () {
+          Navigator.pushNamed(context, '/adhd');
+        },
+        child: TitleView(
+          titleTxt: 'ADHD',
+          subTxt: 'Start Test',
+          animation: Tween<double>(begin: 0.0, end: 1.0).animate(
+            CurvedAnimation(
+              parent: widget.animationController!,
+              curve: const Interval((1 / count) * 6, 1.0,
+                  curve: Curves.fastOutSlowIn),
+            ),
+          ),
+          animationController: widget.animationController!,
+        ),
+      ),
+    );
+
+    listViews.add(
+      TestScreenCardView(
+        animation: Tween<double>(begin: 0.0, end: 1.0).animate(
+          CurvedAnimation(
+            parent: widget.animationController!,
+            curve: const Interval((1 / count) * 5, 1.0,
+                curve: Curves.fastOutSlowIn),
+          ),
+        ),
+        animationController: widget.animationController!,
+        testTitle: 'ADHD',
+        minTime: 10,
+        testStatus: 100,
+        lastOpened: 'Today 14:50',
+        score: 20,
+        questions: 18,
+      ),
+    );
     // listViews.add(
     //   WaterView(
     //     mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
