@@ -29,7 +29,7 @@ class _AreaListViewState extends State<AreaListView>
   List<String> areaListDescription = <String>[
     'A national 24/7 toll free helpline launched by the Ministry of Social Justice and Empowerment to help people with suicidal thoughts, depression and other mental health issues.',
     'A crisis intervention centre for the depressed, distressed and suicidal. The Helpline provides unconditional and unbiased emotional support to callers, visitors or those who write in.',
-    'A service provided by Medico Pastoral Association (MPA) and is run by trained active volunteers. If any caller requires face to face counselling, they are referred to MPA counsellors who are fully trained.',
+    'A service by Medico Pastoral Association (MPA) run by trained active volunteers. For face to face counselling, they are referred to MPA counsellors who are fully trained.',
     'The number is for students or parents with queries related to stress, mental wellbeing, exam tips or even to consult a team of experts and behavioral psychologists.',
     'This is a helpline for anyone experiencing mental health distress during the COVID 19 crisis by National Institute of Mental Health & Neuro Sciences Bengaluru.',
   ];
@@ -83,10 +83,10 @@ class _AreaListViewState extends State<AreaListView>
                 ),
                 child: GridView(
                   padding: const EdgeInsets.only(
-                    left: 16,
-                    right: 16,
-                    top: 16,
-                    bottom: 16,
+                    left: 12,
+                    right: 12,
+                    top: 12,
+                    bottom: 12,
                   ),
                   physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.vertical,
@@ -106,7 +106,7 @@ class _AreaListViewState extends State<AreaListView>
                     crossAxisCount: 2,
                     mainAxisSpacing: 16.0,
                     crossAxisSpacing: 16.0,
-                    childAspectRatio: 1.0,
+                    childAspectRatio: 0.7,
                   ),
                 ),
               ),
@@ -162,19 +162,19 @@ class AreaView extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.only(top: 8, left: 8, right: 8),
+                  padding: const EdgeInsets.all(6),
                   child: Column(
                     children: <Widget>[
                       Padding(
                         padding:
-                            const EdgeInsets.only(top: 8, left: 8, right: 8),
+                            const EdgeInsets.only(top: 8, left: 6, right: 6),
                         child: Text(
                           title!,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontFamily: KiranAppTheme.fontName,
                             fontWeight: FontWeight.w500,
-                            fontSize: 20,
+                            fontSize: 18,
                             letterSpacing: 0.1,
                             color: KiranAppTheme.darkerText,
                           ),
@@ -182,7 +182,7 @@ class AreaView extends StatelessWidget {
                       ),
                       Padding(
                         padding:
-                            const EdgeInsets.only(top: 8, left: 8, right: 8),
+                            const EdgeInsets.only(top: 8, left: 6, right: 6),
                         child: Text(
                           description!,
                           textAlign: TextAlign.center,
@@ -197,7 +197,7 @@ class AreaView extends StatelessWidget {
                       ),
                       Padding(
                         padding:
-                            const EdgeInsets.only(top: 8, left: 8, right: 8),
+                            const EdgeInsets.only(top: 8, left: 6, right: 6),
                         child: Text(
                           availability!,
                           textAlign: TextAlign.center,
@@ -213,7 +213,7 @@ class AreaView extends StatelessWidget {
                       ),
                       Padding(
                         padding:
-                            const EdgeInsets.only(top: 8, left: 8, right: 8),
+                            const EdgeInsets.only(top: 8, left: 6, right: 6),
                         child: InkWell(
                           onTap: () {
                             UrlLauncher.launch("tel:$phone_number");

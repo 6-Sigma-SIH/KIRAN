@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
-import 'package:kiran/kiran_app/ui_view/area_list_view.dart';
+import 'package:kiran/kiran_app/ui_view/contact_list_view.dart';
 import 'package:flutter/material.dart';
 
 import '../kiran_app_theme.dart';

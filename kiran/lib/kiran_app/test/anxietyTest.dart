@@ -4,8 +4,16 @@ import 'package:flutter/material.dart';
 class AnxietyTest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('Test Screen'),
+    return SafeArea(
+      child: Container(
+        child: Text(
+          'Test Screen 2',
+          style: TextStyle(
+            fontSize: 20,
+            color: Colors.blue,
+          ),
+        ),
+      ),
     );
   }
 }

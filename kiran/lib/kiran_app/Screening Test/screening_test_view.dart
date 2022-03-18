@@ -105,16 +105,18 @@ class _TestingScreenState extends State<TestingScreen>
     listViews.add(
       TextButton(
         onPressed: () {
-          Navigator.pushNamed(context, '/');
+          Navigator.pushNamed(context, '/anxiety');
         },
         child: TitleView(
           titleTxt: 'Anxiety',
           subTxt: 'Start Test',
           animation: Tween<double>(begin: 0.0, end: 1.0).animate(
-              CurvedAnimation(
-                  parent: widget.animationController!,
-                  curve: const Interval((1 / count) * 4, 1.0,
-                      curve: Curves.fastOutSlowIn))),
+            CurvedAnimation(
+              parent: widget.animationController!,
+              curve: const Interval((1 / count) * 4, 1.0,
+                  curve: Curves.fastOutSlowIn),
+            ),
+          ),
           animationController: widget.animationController!,
         ),
       ),
@@ -286,14 +288,15 @@ class _TestingScreenState extends State<TestingScreen>
                           children: <Widget>[
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsets.all(10.0),
+                                padding: const EdgeInsets.only(
+                                    left: 10.0, top: 10, right: 10, bottom: 15),
                                 child: Text(
                                   'Screening Test',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                     fontFamily: KiranAppTheme.fontName,
                                     fontWeight: FontWeight.w700,
-                                    fontSize: 22 + 6 - 6 * topBarOpacity,
+                                    fontSize: 18 + 6 - 6 * topBarOpacity,
                                     letterSpacing: 1.2,
                                     color: KiranAppTheme.darkerText,
                                   ),

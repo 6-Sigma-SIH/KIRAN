@@ -1,4 +1,4 @@
-import 'package:kiran/kiran_app/ui_view/area_list_view.dart';
+import 'package:kiran/kiran_app/ui_view/contact_list_view.dart';
 import 'package:kiran/kiran_app/ui_view/running_view.dart';
 import 'package:kiran/kiran_app/ui_view/title_view.dart';
 import 'package:kiran/kiran_app/ui_view/workout_view.dart';

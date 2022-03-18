@@ -41,9 +41,9 @@ class MyApp extends StatelessWidget {
         textTheme: AppTheme.textTheme,
         platform: TargetPlatform.iOS,
       ),
-      home: const LoginScreen(),
+      initialRoute: '/',
       routes: {
-        '/xyz': (context) => KiranAppHomeScreen(),
+        '/': (context) => LoginScreen(),
         '/anxiety': (context) => AnxietyTest(),
         '/editProfile': (context) => EditProfileScreen(),
       },
