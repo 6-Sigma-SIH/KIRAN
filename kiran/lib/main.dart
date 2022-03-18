@@ -3,6 +3,7 @@ import 'package:kiran/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:kiran/kiran_app/kiran_app_home_screen.dart';
+import 'package:kiran/login_screen/login_screen.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
 void main() async {
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
         textTheme: AppTheme.textTheme,
         platform: TargetPlatform.iOS,
       ),
-      home: const KiranAppHomeScreen(),
+      home: const LoginScreen(),
     );
   }
 }
