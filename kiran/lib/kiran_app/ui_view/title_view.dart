@@ -63,13 +63,8 @@ class TitleView extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(
-                            height: 38,
+                            height: 45,
                             width: 26,
-                            child: Icon(
-                              Icons.arrow_forward,
-                              color: KiranAppTheme.darkText,
-                              size: 18,
-                            ),
                           ),
                         ],
                       ),

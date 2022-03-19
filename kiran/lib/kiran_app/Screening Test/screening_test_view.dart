@@ -103,41 +103,54 @@ class _TestingScreenState extends State<TestingScreen>
     // );
 
     listViews.add(
+      TitleView(
+        titleTxt: 'Anxiety',
+        animation: Tween<double>(begin: 0.0, end: 1.0).animate(
+          CurvedAnimation(
+            parent: widget.animationController!,
+            curve: const Interval((1 / count) * 4, 1.0,
+                curve: Curves.fastOutSlowIn),
+          ),
+        ),
+        animationController: widget.animationController!,
+      ),
+    );
+
+    listViews.add(
       TextButton(
         onPressed: () {
           Navigator.pushNamed(context, '/anxiety');
         },
-        child: TitleView(
-          titleTxt: 'Anxiety',
-          subTxt: 'Start Test',
+        child: TestScreenCardView(
           animation: Tween<double>(begin: 0.0, end: 1.0).animate(
             CurvedAnimation(
               parent: widget.animationController!,
-              curve: const Interval((1 / count) * 4, 1.0,
+              curve: const Interval((1 / count) * 5, 1.0,
                   curve: Curves.fastOutSlowIn),
             ),
           ),
           animationController: widget.animationController!,
+          testTitle: 'Anxiety',
+          minTime: 20,
+          testStatus: 70,
+          lastOpened: '18/03/2022 14:50',
+          score: 90,
+          questions: 30,
         ),
       ),
     );
 
     listViews.add(
-      TestScreenCardView(
+      TitleView(
+        titleTxt: 'Depression',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(
           CurvedAnimation(
             parent: widget.animationController!,
-            curve: const Interval((1 / count) * 5, 1.0,
+            curve: const Interval((1 / count) * 6, 1.0,
                 curve: Curves.fastOutSlowIn),
           ),
         ),
         animationController: widget.animationController!,
-        testTitle: 'Anxiety',
-        minTime: 20,
-        testStatus: 70,
-        lastOpened: '18/03/2022 14:50',
-        score: 90,
-        questions: 30,
       ),
     );
 
@@ -146,37 +159,36 @@ class _TestingScreenState extends State<TestingScreen>
         onPressed: () {
           Navigator.pushNamed(context, '/depression');
         },
-        child: TitleView(
-          titleTxt: 'Depression',
-          subTxt: 'Start Test',
+        child: TestScreenCardView(
           animation: Tween<double>(begin: 0.0, end: 1.0).animate(
             CurvedAnimation(
               parent: widget.animationController!,
-              curve: const Interval((1 / count) * 6, 1.0,
+              curve: const Interval((1 / count) * 5, 1.0,
                   curve: Curves.fastOutSlowIn),
             ),
           ),
           animationController: widget.animationController!,
+          testTitle: 'Depression',
+          minTime: 30,
+          testStatus: 100,
+          lastOpened: 'Today 14:50',
+          score: 40,
+          questions: 20,
         ),
       ),
     );
 
     listViews.add(
-      TestScreenCardView(
+      TitleView(
+        titleTxt: 'ADHD',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(
           CurvedAnimation(
             parent: widget.animationController!,
-            curve: const Interval((1 / count) * 5, 1.0,
+            curve: const Interval((1 / count) * 6, 1.0,
                 curve: Curves.fastOutSlowIn),
           ),
         ),
         animationController: widget.animationController!,
-        testTitle: 'Depression',
-        minTime: 30,
-        testStatus: 100,
-        lastOpened: 'Today 14:50',
-        score: 40,
-        questions: 20,
       ),
     );
 
@@ -185,37 +197,22 @@ class _TestingScreenState extends State<TestingScreen>
         onPressed: () {
           Navigator.pushNamed(context, '/adhd');
         },
-        child: TitleView(
-          titleTxt: 'ADHD',
-          subTxt: 'Start Test',
+        child: TestScreenCardView(
           animation: Tween<double>(begin: 0.0, end: 1.0).animate(
             CurvedAnimation(
               parent: widget.animationController!,
-              curve: const Interval((1 / count) * 6, 1.0,
+              curve: const Interval((1 / count) * 5, 1.0,
                   curve: Curves.fastOutSlowIn),
             ),
           ),
           animationController: widget.animationController!,
+          testTitle: 'ADHD',
+          minTime: 10,
+          testStatus: 100,
+          lastOpened: 'Today 14:50',
+          score: 20,
+          questions: 18,
         ),
-      ),
-    );
-
-    listViews.add(
-      TestScreenCardView(
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(
-          CurvedAnimation(
-            parent: widget.animationController!,
-            curve: const Interval((1 / count) * 5, 1.0,
-                curve: Curves.fastOutSlowIn),
-          ),
-        ),
-        animationController: widget.animationController!,
-        testTitle: 'ADHD',
-        minTime: 10,
-        testStatus: 100,
-        lastOpened: 'Today 14:50',
-        score: 20,
-        questions: 18,
       ),
     );
     // listViews.add(
