@@ -117,6 +117,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 text: '$phoneNo',
                 onChanged: (phoneno) {},
               ),
+<<<<<<< HEAD
               const SizedBox(height: 24),
               TextFieldWidget(
                 label: 'Medical Details',
@@ -143,6 +144,26 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                             'Close',
                             style: TextStyle(fontSize: 15),
                           ),
+=======
+              SizedBox(height: 24),
+              ProgressButton.icon(
+                  iconedButtons: {
+                    ButtonState.idle: IconedButton(
+                        text: "Send",
+                        icon: Icon(Icons.send, color: Colors.white),
+                        color: Colors.deepPurple.shade500),
+                    ButtonState.loading: IconedButton(
+                        text: "Loading", color: Colors.deepPurple.shade700),
+                    ButtonState.fail: IconedButton(
+                        text: "Failed",
+                        icon: Icon(Icons.cancel, color: Colors.white),
+                        color: Colors.red.shade300),
+                    ButtonState.success: IconedButton(
+                        text: "Success",
+                        icon: Icon(
+                          Icons.check_circle,
+                          color: Colors.white,
+>>>>>>> 7a40a3f45842a36a5fc20e791973b0ecbce03aaa
                         ),
                         style: OutlinedButton.styleFrom(
                           primary: Colors.black,
