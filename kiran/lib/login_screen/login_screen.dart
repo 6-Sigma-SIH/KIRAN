@@ -4,6 +4,7 @@ import 'package:kiran/kiran_app/kiran_app_home_screen.dart';
 import 'package:kiran/login_screen/api_response.dart';
 import 'package:http/http.dart' as http;
 import 'package:kiran/kiran_app/kiran_app_theme.dart';
+import 'package:kiran/login_screen/register_screen.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 // const users = {
@@ -97,10 +98,10 @@ class AppPermission extends State<AppState> {
 }
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  LoginScreen({Key? key}) : super(key: key);
 
   Duration get loginTime => const Duration(milliseconds: 2250);
-
+  bool pushRegisterScreen = false;
   Future<String?> _authUser(LoginData data) async {
     debugPrint('Name: ${data.name}, Password: ${data.password}');
     return Future.delayed(loginTime).then(
@@ -130,32 +131,11 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  Future<String?> _signupUser(SignupData data) {
+  Future<String?> _signupUser(SignupData data) async {
     debugPrint('Signup Name: ${data.name}, Password: ${data.password}');
+    pushRegisterScreen = true;
     return Future.delayed(loginTime).then(
-      (_) async {
-        ApiResponse _apiResponse = ApiResponse();
-
-        try {
-          final response = await http.post(
-            Uri.parse('${_baseUrl}v2/registerPatient'),
-            body: {
-              'email': data.name,
-              'password': data.password,
-            },
-          );
-          if (response.statusCode == 200) {
-            _apiResponse.Data = response.body;
-          } else {
-            _apiResponse.ApiError = "Invalid Credentials";
-            return 'Invalid Credentials';
-          }
-          debugPrint(response.body);
-        } catch (e) {
-          return e.toString();
-        }
-        return null;
-      },
+      (_) async {},
     );
   }
 
@@ -181,8 +161,13 @@ class LoginScreen extends StatelessWidget {
       onSubmitAnimationCompleted: () {
         AppPermission().requestLocationPermission();
         AppPermission().requestStoragePermission();
-        Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (context) => const KiranAppHomeScreen()));
+        if (pushRegisterScreen) {
+          Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => RegisterScreen()));
+        } else {
+          Navigator.of(context).pushReplacement(MaterialPageRoute(
+              builder: (context) => const KiranAppHomeScreen()));
+        }
       },
       onRecoverPassword: _recoverPassword,
       messages: LoginMessages(
