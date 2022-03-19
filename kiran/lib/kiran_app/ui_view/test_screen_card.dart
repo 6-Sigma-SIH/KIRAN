@@ -68,7 +68,7 @@ class TestScreenCardView extends StatelessWidget {
                         children: <Widget>[
                           Padding(
                             padding:
-                                EdgeInsets.only(left: 4, bottom: 8, top: 16),
+                                EdgeInsets.only(left: 4, bottom: 8, top: 14),
                             child: Text(
                               testTitle,
                               textAlign: TextAlign.center,
