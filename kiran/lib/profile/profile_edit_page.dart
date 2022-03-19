@@ -154,7 +154,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           ),
                         ),
                         onPressed: () {
-                          print('Pressed');
+                          Navigator.pop(context);
                         },
                       ),
                     ),
