@@ -22,7 +22,7 @@ final _kEventSource = Map.fromIterable(List.generate(50, (index) => index),
         item % 4 + 1, (index) => Event('Event $item | ${index + 1}')))
   ..addAll({
     kToday: [
-      Event('Today\'s Event 1'),
+      Event('Today\'s Slot 1'),
     ],
   });
 
@@ -44,6 +44,8 @@ final kFirstDay = DateTime(kToday.year, kToday.month - 3, kToday.day);
 final kLastDay = DateTime(kToday.year, kToday.month + 3, kToday.day);
 
 class Calendar extends StatefulWidget {
+  const Calendar({Key? key}) : super(key: key);
+
   @override
   _CalendarState createState() => _CalendarState();
 }

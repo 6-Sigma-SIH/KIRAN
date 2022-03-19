@@ -5,6 +5,7 @@ class TextFieldWidget extends StatefulWidget {
   final String label;
   final String text;
   final ValueChanged<String> onChanged;
+  final keyboardInputType;
 
   const TextFieldWidget({
     Key? key,
@@ -12,6 +13,7 @@ class TextFieldWidget extends StatefulWidget {
     required this.label,
     required this.text,
     required this.onChanged,
+    this.keyboardInputType,
   }) : super(key: key);
 
   @override
@@ -45,6 +47,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
           ),
           const SizedBox(height: 8),
           TextField(
+            keyboardType: widget.keyboardInputType ?? TextInputType.text,
             controller: controller,
             decoration: InputDecoration(
               border: OutlineInputBorder(

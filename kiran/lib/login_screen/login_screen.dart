@@ -58,43 +58,6 @@ class AppPermission extends State<AppState> {
     // TODO: implement build
     throw {requestLocationPermission(), requestStoragePermission()};
   }
-
-  // Widget build(BuildContext context) {
-  //   return Center(
-  //     child: Column(
-  //       mainAxisAlignment: MainAxisAlignment.center,
-  //       children: <Widget>[
-  //         Container(
-  //           margin: const EdgeInsets.all(10),
-  //           child: ElevatedButton(
-  //             style: ElevatedButton.styleFrom(
-  //               primary: Colors.lightBlue,
-  //               padding: EdgeInsets.all(8),
-  //               textStyle: TextStyle(fontSize: 20),
-  //             ),
-  //             child: Text('Request Runtime Storage Permission'),
-  //             onPressed: requestStoragePermission,
-  //           ),
-  //         ),
-  //         Container(
-  //           margin: const EdgeInsets.all(10),
-  //           child: ElevatedButton(
-  //             style: ElevatedButton.styleFrom(
-  //               primary: Colors.lightBlue,
-  //               padding: EdgeInsets.all(8),
-  //               textStyle: TextStyle(fontSize: 20),
-  //             ),
-  //             child: Text('Request Runtime Location Permission'),
-  //             onPressed: () {
-  //               requestLocationPermission();
-  //               Navigator.pushNamed(context, '/login');
-  //             },
-  //           ),
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
 }
 
 class LoginScreen extends StatelessWidget {
