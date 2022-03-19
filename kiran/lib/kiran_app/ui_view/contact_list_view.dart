@@ -74,39 +74,43 @@ class _AreaListViewState extends State<AreaListView>
               30 * (1.0 - widget.mainScreenAnimation!.value),
               0.0,
             ),
-            child: AspectRatio(
-              aspectRatio: 1.0,
-              child: Padding(
-                padding: const EdgeInsets.only(
-                  left: 8.0,
-                  right: 8,
-                ),
-                child: GridView(
+            child: Expanded(
+              flex: 1,
+              child: AspectRatio(
+                aspectRatio: 0.5,
+                child: Padding(
                   padding: const EdgeInsets.only(
-                    left: 12,
-                    right: 12,
-                    top: 12,
-                    bottom: 12,
+                    left: 8.0,
+                    right: 8,
                   ),
-                  physics: const BouncingScrollPhysics(),
-                  scrollDirection: Axis.vertical,
-                  children: List<Widget>.generate(
-                    areaListTitle.length,
-                    (int index) {
-                      animationController?.forward();
-                      return AreaView(
-                        title: areaListTitle[index],
-                        description: areaListDescription[index],
-                        phone_number: areaListNumber[index],
-                        availability: areaListAvailability[index],
-                      );
-                    },
-                  ),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 16.0,
-                    crossAxisSpacing: 16.0,
-                    childAspectRatio: 0.7,
+                  child: GridView(
+                    padding: const EdgeInsets.only(
+                      left: 12,
+                      right: 12,
+                      top: 12,
+                      bottom: 12,
+                    ),
+                    physics: const BouncingScrollPhysics(),
+                    scrollDirection: Axis.vertical,
+                    children: List<Widget>.generate(
+                      areaListTitle.length,
+                      (int index) {
+                        animationController?.forward();
+                        return AreaView(
+                          title: areaListTitle[index],
+                          description: areaListDescription[index],
+                          phone_number: areaListNumber[index],
+                          availability: areaListAvailability[index],
+                        );
+                      },
+                    ),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 16.0,
+                      crossAxisSpacing: 16.0,
+                      childAspectRatio: 0.7,
+                    ),
                   ),
                 ),
               ),
@@ -151,92 +155,64 @@ class AreaView extends StatelessWidget {
         ),
         child: Material(
           color: Colors.transparent,
-          child: Container(
-            // Replace Container with Inkwell if you want it to respond to touch
-            // focusColor: Colors.transparent,
-            // highlightColor: Colors.transparent,
-            // hoverColor: Colors.transparent,
-            // borderRadius: const BorderRadius.all(Radius.circular(8.0)),
-            // splashColor: KiranAppTheme.nearlyDarkBlue.withOpacity(0.2),
-            // onTap: () {},
-            child: Column(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(6),
-                  child: Column(
-                    children: <Widget>[
-                      Padding(
-                        padding:
-                            const EdgeInsets.only(top: 8, left: 6, right: 6),
-                        child: Text(
-                          title!,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontFamily: KiranAppTheme.fontName,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 18,
-                            letterSpacing: 0.1,
-                            color: KiranAppTheme.darkerText,
-                          ),
-                        ),
+          child: InkWell(
+            focusColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+            splashColor: KiranAppTheme.nearlyDarkBlue.withOpacity(0.2),
+            onTap: () {
+              UrlLauncher.launch("tel:$phone_number");
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(6),
+              child: Column(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8, left: 6, right: 6),
+                    child: Text(
+                      title!,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontFamily: KiranAppTheme.fontName,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 18,
+                        letterSpacing: 0.1,
+                        color: KiranAppTheme.darkerText,
                       ),
-                      Padding(
-                        padding:
-                            const EdgeInsets.only(top: 8, left: 6, right: 6),
-                        child: Text(
-                          description!,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontFamily: KiranAppTheme.fontName,
-                            fontWeight: FontWeight.w300,
-                            fontSize: 12,
-                            letterSpacing: 0.1,
-                            color: KiranAppTheme.darkerText,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            const EdgeInsets.only(top: 8, left: 6, right: 6),
-                        child: Text(
-                          availability!,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontFamily: KiranAppTheme.fontName,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 14,
-                            fontStyle: FontStyle.italic,
-                            letterSpacing: 0.1,
-                            color: KiranAppTheme.darkerText,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            const EdgeInsets.only(top: 8, left: 6, right: 6),
-                        child: InkWell(
-                          onTap: () {
-                            UrlLauncher.launch("tel:$phone_number");
-                          },
-                          child: Text(
-                            phone_number!,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontFamily: KiranAppTheme.fontName,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 16,
-                              decoration: TextDecoration.underline,
-                              decorationColor: Colors.black,
-                              letterSpacing: 0.1,
-                              color: KiranAppTheme.darkerText,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
-                ),
-              ],
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8, left: 6, right: 6),
+                    child: Text(
+                      description!,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontFamily: KiranAppTheme.fontName,
+                        fontWeight: FontWeight.w300,
+                        fontSize: 14,
+                        letterSpacing: 0.1,
+                        color: KiranAppTheme.darkerText,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8, left: 6, right: 6),
+                    child: Text(
+                      availability!,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontFamily: KiranAppTheme.fontName,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14,
+                        fontStyle: FontStyle.italic,
+                        letterSpacing: 0.1,
+                        color: KiranAppTheme.darkerText,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ));
