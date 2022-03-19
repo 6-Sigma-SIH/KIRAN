@@ -51,7 +51,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => LoginScreen(),
-        '/calendar': (context) => StartPage(),
+        '/calendar': (context) => Calendar(),
         '/anxiety': (context) => AnxietyTest(),
         '/depression': (context) => DepressionScreen(),
         '/adhd': (context) => AdhdTest(),
