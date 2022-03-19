@@ -64,7 +64,6 @@ class TitleView extends StatelessWidget {
                           ),
                           const SizedBox(
                             height: 45,
-                            width: 26,
                           ),
                         ],
                       ),
