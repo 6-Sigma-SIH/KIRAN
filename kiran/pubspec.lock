@@ -206,7 +206,7 @@ packages:
     source: hosted
     version: "2.1.2"
   progress_state_button:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: progress_state_button
       url: "https://pub.dartlang.org"
