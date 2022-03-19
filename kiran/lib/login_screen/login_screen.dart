@@ -19,11 +19,11 @@ class AppState extends StatefulWidget {
 
 class AppPermission extends State<AppState> {
   Future<void> requestStoragePermission() async {
-    final serviceStatus = await Permission.manageExternalStorage.isGranted;
+    final serviceStatus = await Permission.storage.isGranted;
 
     bool isPermissionOn = serviceStatus == ServiceStatus.enabled;
 
-    final status = await Permission.manageExternalStorage.request();
+    final status = await Permission.storage.request();
 
     if (status == PermissionStatus.granted) {
       print('Permission Granted');
@@ -55,7 +55,7 @@ class AppPermission extends State<AppState> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    throw requestLocationPermission();
+    throw {requestLocationPermission(), requestStoragePermission()};
   }
 
   // Widget build(BuildContext context) {
@@ -180,6 +180,7 @@ class LoginScreen extends StatelessWidget {
       onSignup: _signupUser,
       onSubmitAnimationCompleted: () {
         AppPermission().requestLocationPermission();
+        AppPermission().requestStoragePermission();
         Navigator.of(context).pushReplacement(MaterialPageRoute(
             builder: (context) => const KiranAppHomeScreen()));
       },
