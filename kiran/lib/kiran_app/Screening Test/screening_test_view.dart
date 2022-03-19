@@ -6,6 +6,7 @@ import 'package:kiran/kiran_app/kiran_app_theme.dart';
 import 'package:kiran/kiran_app/Screening Test/meals_list_view.dart';
 import 'package:kiran/kiran_app/Screening Test/water_view.dart';
 import 'package:flutter/material.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 class TestingScreen extends StatefulWidget {
   const TestingScreen({Key? key, this.animationController}) : super(key: key);
@@ -346,18 +347,18 @@ class _TestingScreenState extends State<TestingScreen>
                             SizedBox(
                               height: 38,
                               width: 38,
-                              child: InkWell(
-                                highlightColor: Colors.transparent,
-                                borderRadius: const BorderRadius.all(
-                                    Radius.circular(32.0)),
-                                onTap: () {},
-                                child: const Center(
-                                  child: Icon(
-                                    Icons.keyboard_arrow_left,
-                                    color: KiranAppTheme.grey,
-                                  ),
-                                ),
-                              ),
+                              // child: InkWell(
+                              //   highlightColor: Colors.transparent,
+                              //   borderRadius: const BorderRadius.all(
+                              //       Radius.circular(32.0)),
+                              //   onTap: () {},
+                              //   child: const Center(
+                              //     child: Icon(
+                              //       Icons.keyboard_arrow_left,
+                              //       color: KiranAppTheme.grey,
+                              //     ),
+                              //   ),
+                              // ),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(
@@ -365,44 +366,56 @@ class _TestingScreenState extends State<TestingScreen>
                                 right: 8,
                               ),
                               child: Row(
-                                children: const <Widget>[
+                                children: <Widget>[
                                   Padding(
-                                    padding: EdgeInsets.only(right: 8),
-                                    child: Icon(
-                                      Icons.calendar_today,
-                                      color: KiranAppTheme.grey,
-                                      size: 18,
+                                    padding:
+                                        EdgeInsets.only(bottom: 7, right: 0),
+                                    child: InkWell(
+                                      highlightColor: Colors.transparent,
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(32.0)),
+                                      onTap: () {
+                                        Navigator.pushNamed(
+                                            context, '/calendar');
+                                      },
+                                      child: Center(
+                                        child: Icon(
+                                          Icons.calendar_today,
+                                          color: KiranAppTheme.grey,
+                                          size: 19,
+                                        ),
+                                      ),
                                     ),
                                   ),
-                                  Text(
-                                    '15 May',
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      fontFamily: KiranAppTheme.fontName,
-                                      fontWeight: FontWeight.normal,
-                                      fontSize: 18,
-                                      letterSpacing: -0.2,
-                                      color: KiranAppTheme.darkerText,
-                                    ),
-                                  ),
+                                  // Text(
+                                  //   'Book',
+                                  //   textAlign: TextAlign.left,
+                                  //   style: TextStyle(
+                                  //     fontFamily: KiranAppTheme.fontName,
+                                  //     fontWeight: FontWeight.normal,
+                                  //     fontSize: 18,
+                                  //     letterSpacing: -0.2,
+                                  //     color: KiranAppTheme.darkerText,
+                                  //   ),
+                                  // ),
                                 ],
                               ),
                             ),
                             SizedBox(
                               height: 38,
                               width: 38,
-                              child: InkWell(
-                                highlightColor: Colors.transparent,
-                                borderRadius: const BorderRadius.all(
-                                    Radius.circular(32.0)),
-                                onTap: () {},
-                                child: const Center(
-                                  child: Icon(
-                                    Icons.keyboard_arrow_right,
-                                    color: KiranAppTheme.grey,
-                                  ),
-                                ),
-                              ),
+                              // child: InkWell(
+                              //   highlightColor: Colors.transparent,
+                              //   borderRadius: const BorderRadius.all(
+                              //       Radius.circular(32.0)),
+                              //   onTap: () {},
+                              //   child: const Center(
+                              //     child: Icon(
+                              //       Icons.keyboard_arrow_right,
+                              //       color: KiranAppTheme.grey,
+                              //     ),
+                              //   ),
+                              // ),
                             ),
                           ],
                         ),

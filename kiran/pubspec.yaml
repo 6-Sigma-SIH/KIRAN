@@ -41,6 +41,7 @@ dependencies:
   http: ^0.13.4
   flutter_login: ^3.2.0
   url_launcher: ^6.0.20
+  table_calendar: ^3.0.4 
 
 dev_dependencies:
   flutter_test:

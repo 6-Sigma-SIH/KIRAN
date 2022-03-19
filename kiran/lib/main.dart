@@ -2,6 +2,8 @@ import 'dart:io';
 import 'package:kiran/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:kiran/kiran_app/calendar/calendar.dart';
 import 'package:kiran/kiran_app/kiran_app_home_screen.dart';
 import 'package:kiran/kiran_app/test/adhdTest.dart';
 import 'package:kiran/kiran_app/test/depressionTest.dart';
@@ -13,9 +15,12 @@ import 'package:kiran/profile/profile_edit_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown
+  Future.wait([
+    SystemChrome.setPreferredOrientations(<DeviceOrientation>[
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown
+    ]),
+    initializeDateFormatting()
   ]).then((_) => runApp(const MyApp()));
 }
 
@@ -46,6 +51,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => LoginScreen(),
+        '/calendar': (context) => StartPage(),
         '/anxiety': (context) => AnxietyTest(),
         '/depression': (context) => DepressionScreen(),
         '/adhd': (context) => AdhdTest(),
