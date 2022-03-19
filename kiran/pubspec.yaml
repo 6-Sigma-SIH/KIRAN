@@ -44,6 +44,8 @@ dependencies:
   table_calendar: ^3.0.4 
   progress_state_button: "^1.0.4"
   permission_handler: ^9.2.0
+  dropdown_button2: ^1.2.2
+
 
 
 dev_dependencies:

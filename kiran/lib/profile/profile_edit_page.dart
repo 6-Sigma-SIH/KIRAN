@@ -6,6 +6,7 @@ import 'package:progress_state_button/progress_button.dart';
 import 'package:kiran/profile/profile_widget/profile_widget.dart';
 import 'package:kiran/profile/profile_widget/textfield_widget.dart';
 import 'package:kiran/app_theme.dart';
+import 'package:dropdown_button2/dropdown_button2.dart';
 
 class EditProfileScreen extends StatefulWidget {
   @override
@@ -67,49 +68,119 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               //   isEdit: true,
               //   onClicked: () async {},
               // ),
-              const SizedBox(height: 24),
-              TextFieldWidget(
-                label: 'First Name',
-                text: '$firstName',
-                onChanged: (firstname) {},
+              Expanded(
+                child: Text(
+                  'Edit Profile',
+                  style: TextStyle(
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
               const SizedBox(height: 24),
-              TextFieldWidget(
-                label: 'Last Name',
-                text: '$lastName',
-                onChanged: (lastName) {},
+              Row(
+                children: [
+                  Expanded(
+                    child: TextFieldWidget(
+                      label: 'First Name',
+                      text: '$firstName',
+                      onChanged: (firstname) {},
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 15,
+                  ),
+                  Expanded(
+                    child: TextFieldWidget(
+                      label: 'Last Name',
+                      text: '$lastName',
+                      onChanged: (lastName) {},
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(height: 24),
 
-              DropdownButton(
-                hint: const Text('Select Gender'), // Not necessary for Option 1
-                value: _selectedGender,
-                onChanged: (newValue) {
-                  setState(() {
-                    _selectedGender = newValue as String;
-                  });
-                },
-                items: _genders.map((location) {
-                  return DropdownMenuItem(
-                    child: new Text(location),
-                    value: location,
-                  );
-                }).toList(),
-              ),
-              const SizedBox(height: 24),
-              TextFieldWidget(
-                keyboardInputType: TextInputType.number,
-                label: 'Age',
-                text: '$age',
-                onChanged: (age) {},
-              ),
-
-              const SizedBox(height: 24),
-              TextFieldWidget(
-                keyboardInputType: TextInputType.emailAddress,
-                label: 'Email',
-                text: '$email',
-                onChanged: (email) {},
+              Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      children: <Widget>[
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Container(
+                            padding: const EdgeInsets.all(5.0),
+                            child: const Text(
+                              "Gender",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 16),
+                            ),
+                          ),
+                        ),
+                        DropdownButtonFormField2(
+                          decoration: InputDecoration(
+                            //Add isDense true and zero Padding.
+                            //Add Horizontal padding using buttonPadding and Vertical padding by increasing buttonHeight instead of add Padding here so that The whole TextField Button become clickable, and also the dropdown menu open under The whole TextField Button.
+                            isDense: true,
+                            contentPadding: EdgeInsets.zero,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            //Add more decoration as you want here
+                            //Add label If you want but add hint outside the decoration to be aligned in the button perfectly.
+                          ),
+                          isExpanded: true,
+                          hint: const Text(
+                            'Gender',
+                            style: TextStyle(fontSize: 14),
+                          ),
+                          icon: const Icon(
+                            Icons.arrow_drop_down,
+                            color: Colors.black45,
+                          ),
+                          iconSize: 30,
+                          buttonHeight: 60,
+                          buttonPadding:
+                              const EdgeInsets.only(left: 20, right: 10),
+                          dropdownDecoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          items: _genders
+                              .map((item) => DropdownMenuItem<String>(
+                                    value: item,
+                                    child: Text(
+                                      item,
+                                      style: const TextStyle(
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                  ))
+                              .toList(),
+                          validator: (value) {
+                            if (value == null) {
+                              return 'Please select gender.';
+                            }
+                          },
+                          onChanged: (value) {
+                            //Do something when changing the item if you want.
+                          },
+                          onSaved: (value) {
+                            _selectedGender = value.toString();
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 15),
+                  Expanded(
+                    child: TextFieldWidget(
+                      keyboardInputType: TextInputType.number,
+                      label: 'Age',
+                      text: '$age',
+                      onChanged: (age) {},
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(height: 24),
               TextFieldWidget(
