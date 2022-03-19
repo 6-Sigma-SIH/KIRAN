@@ -6,6 +6,7 @@ import 'package:kiran/profile/profile_widget/textfield_widget.dart';
 import 'package:progress_state_button/iconed_button.dart';
 import 'package:progress_state_button/progress_button.dart';
 import 'package:kiran/login_screen/api_response.dart';
+import 'package:dropdown_button2/dropdown_button2.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -37,7 +38,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
               padding: const EdgeInsets.all(32),
               physics: const BouncingScrollPhysics(),
               children: [
-                const Text('Register', style: TextStyle(fontSize: 24)),
+                const Expanded(
+                  child: Text(
+                    'Register',
+                    style: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
                 const SizedBox(height: 24),
                 ProfileWidget(
                   isEdit: true,
@@ -73,35 +82,88 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 const SizedBox(height: 24),
                 TextFieldWidget(
+                  keyboardInputType: TextInputType.number,
                   label: 'Phone Number',
                   text: phone,
-                  onChanged: (email) {},
+                  onChanged: (phone) {},
                 ),
                 const SizedBox(height: 24),
                 SizedBox(
                   child: Row(
                     children: [
                       Expanded(
-                        child: DropdownButton(
-                          hint: const Text(
-                              'Select Gender'), // Not necessary for Option 1
-                          value: _selectedGender,
-                          onChanged: (newValue) {
-                            setState(() {
-                              _selectedGender = newValue as String;
-                            });
-                          },
-                          items: _genders.map((gender) {
-                            return DropdownMenuItem(
-                              child: Text(gender),
-                              value: gender,
-                            );
-                          }).toList(),
+                        child: Column(
+                          children: <Widget>[
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Container(
+                                padding: const EdgeInsets.all(5.0),
+                                child: const Text(
+                                  "Gender",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16),
+                                ),
+                              ),
+                            ),
+                            DropdownButtonFormField2(
+                              decoration: InputDecoration(
+                                //Add isDense true and zero Padding.
+                                //Add Horizontal padding using buttonPadding and Vertical padding by increasing buttonHeight instead of add Padding here so that The whole TextField Button become clickable, and also the dropdown menu open under The whole TextField Button.
+                                isDense: true,
+                                contentPadding: EdgeInsets.zero,
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                //Add more decoration as you want here
+                                //Add label If you want but add hint outside the decoration to be aligned in the button perfectly.
+                              ),
+                              isExpanded: true,
+                              hint: const Text(
+                                'Gender',
+                                style: TextStyle(fontSize: 14),
+                              ),
+                              icon: const Icon(
+                                Icons.arrow_drop_down,
+                                color: Colors.black45,
+                              ),
+                              iconSize: 30,
+                              buttonHeight: 60,
+                              buttonPadding:
+                                  const EdgeInsets.only(left: 20, right: 10),
+                              dropdownDecoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              items: _genders
+                                  .map((item) => DropdownMenuItem<String>(
+                                        value: item,
+                                        child: Text(
+                                          item,
+                                          style: const TextStyle(
+                                            fontSize: 14,
+                                          ),
+                                        ),
+                                      ))
+                                  .toList(),
+                              validator: (value) {
+                                if (value == null) {
+                                  return 'Please select gender.';
+                                }
+                              },
+                              onChanged: (value) {
+                                //Do something when changing the item if you want.
+                              },
+                              onSaved: (value) {
+                                _selectedGender = value.toString();
+                              },
+                            ),
+                          ],
                         ),
                       ),
                       const SizedBox(width: 15),
                       Expanded(
                         child: TextFieldWidget(
+                          keyboardInputType: TextInputType.number,
                           label: 'Age',
                           text: age,
                           onChanged: (name) {},
@@ -113,12 +175,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 const SizedBox(height: 24),
                 ProgressButton.icon(
                     iconedButtons: {
-                      ButtonState.idle: IconedButton(
-                          text: "Register",
-                          icon: const Icon(Icons.done, color: Colors.white),
-                          color: Colors.deepPurple.shade500),
-                      ButtonState.loading: IconedButton(
-                          text: "Loading", color: Colors.deepPurple.shade700),
+                      ButtonState.idle: const IconedButton(
+                        text: "Register",
+                        icon: Icon(Icons.done, color: Colors.white),
+                        color: KiranAppTheme.nearlyDarkBlue,
+                      ),
+                      ButtonState.loading: const IconedButton(
+                          text: "Loading", color: KiranAppTheme.nearlyBlue),
                       ButtonState.fail: IconedButton(
                           text: "Failed",
                           icon: const Icon(Icons.cancel, color: Colors.white),
@@ -132,19 +195,24 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           color: Colors.green.shade400)
                     },
                     onPressed: () async {
+                      print("Here");
                       ApiResponse _apiResponse = ApiResponse();
 
                       try {
                         final response = await http.post(
-                            Uri.parse('${_baseUrl}v2/loginPatient'),
+                            Uri.parse('${_baseUrl}v2/registerPatient'),
                             body: {
                               "firstName": firstName,
+                              "lastName": lastName,
+                              "age": age,
                               "gender": _selectedGender,
                               "password": password,
-                              "email": email
+                              "phoneNo": phone,
+                              "email": email,
                             });
                         if (response.statusCode == 200) {
                           _apiResponse.Data = response.body;
+                          Navigator.of(context).popAndPushNamed('/');
                         } else {
                           _apiResponse.ApiError = "Invalid Credentials";
                           return 'Invalid Credentials';
