@@ -40,6 +40,7 @@ class EditProfileScreen extends StatelessWidget {
                 maxLines: 5,
                 onChanged: (about) {},
               ),
+              SizedBox(height: 24),
               ProgressButton.icon(
                   iconedButtons: {
                     ButtonState.idle: IconedButton(

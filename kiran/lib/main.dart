@@ -13,7 +13,6 @@ import 'package:kiran/login_screen/login_screen.dart';
 import 'package:kiran/kiran_app/test/anxietyTest.dart';
 import 'package:kiran/profile/profile_edit_page.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:kiran/profile/profile_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -50,15 +49,14 @@ class MyApp extends StatelessWidget {
         textTheme: AppTheme.textTheme,
         platform: TargetPlatform.iOS,
       ),
-      home: LoginScreen(),
+      initialRoute: '/',
       routes: {
-        // '/login': (context) => LoginScreen(),
+        '/': (context) => LoginScreen(),
         '/calendar': (context) => Calendar(),
         '/anxiety': (context) => AnxietyTest(),
         '/depression': (context) => DepressionScreen(),
         '/adhd': (context) => AdhdTest(),
         '/editProfile': (context) => EditProfileScreen(),
-        '/ProfilePage': (context) => ProfileScreen(),
       },
     );
   }

@@ -4,12 +4,97 @@ import 'package:kiran/kiran_app/kiran_app_home_screen.dart';
 import 'package:kiran/login_screen/api_response.dart';
 import 'package:http/http.dart' as http;
 import 'package:kiran/kiran_app/kiran_app_theme.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 // const users = {
 //   'dribbble@gmail.com': '12345',
 //   'hunter@gmail.com': 'hunter',
 // };
 String _baseUrl = "https://apiv2kiranapp.herokuapp.com/";
+
+class AppState extends StatefulWidget {
+  @override
+  AppPermission createState() => AppPermission();
+}
+
+class AppPermission extends State<AppState> {
+  Future<void> requestStoragePermission() async {
+    final serviceStatus = await Permission.manageExternalStorage.isGranted;
+
+    bool isPermissionOn = serviceStatus == ServiceStatus.enabled;
+
+    final status = await Permission.manageExternalStorage.request();
+
+    if (status == PermissionStatus.granted) {
+      print('Permission Granted');
+    } else if (status == PermissionStatus.denied) {
+      print('Permission denied');
+    } else if (status == PermissionStatus.permanentlyDenied) {
+      print('Permission Permanently Denied');
+      await openAppSettings();
+    }
+  }
+
+  Future<void> requestLocationPermission() async {
+    final serviceStatusLocation = await Permission.locationWhenInUse.isGranted;
+
+    bool isLocation = serviceStatusLocation == ServiceStatus.enabled;
+
+    final status = await Permission.locationWhenInUse.request();
+
+    if (status == PermissionStatus.granted) {
+      print('Permission Granted');
+    } else if (status == PermissionStatus.denied) {
+      print('Permission denied');
+    } else if (status == PermissionStatus.permanentlyDenied) {
+      print('Permission Permanently Denied');
+      await openAppSettings();
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    throw requestLocationPermission();
+  }
+
+  // Widget build(BuildContext context) {
+  //   return Center(
+  //     child: Column(
+  //       mainAxisAlignment: MainAxisAlignment.center,
+  //       children: <Widget>[
+  //         Container(
+  //           margin: const EdgeInsets.all(10),
+  //           child: ElevatedButton(
+  //             style: ElevatedButton.styleFrom(
+  //               primary: Colors.lightBlue,
+  //               padding: EdgeInsets.all(8),
+  //               textStyle: TextStyle(fontSize: 20),
+  //             ),
+  //             child: Text('Request Runtime Storage Permission'),
+  //             onPressed: requestStoragePermission,
+  //           ),
+  //         ),
+  //         Container(
+  //           margin: const EdgeInsets.all(10),
+  //           child: ElevatedButton(
+  //             style: ElevatedButton.styleFrom(
+  //               primary: Colors.lightBlue,
+  //               padding: EdgeInsets.all(8),
+  //               textStyle: TextStyle(fontSize: 20),
+  //             ),
+  //             child: Text('Request Runtime Location Permission'),
+  //             onPressed: () {
+  //               requestLocationPermission();
+  //               Navigator.pushNamed(context, '/login');
+  //             },
+  //           ),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
+}
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -18,62 +103,72 @@ class LoginScreen extends StatelessWidget {
 
   Future<String?> _authUser(LoginData data) async {
     debugPrint('Name: ${data.name}, Password: ${data.password}');
-    return Future.delayed(loginTime).then((_) async {
-      ApiResponse _apiResponse = ApiResponse();
+    return Future.delayed(loginTime).then(
+      (_) async {
+        ApiResponse _apiResponse = ApiResponse();
 
-      try {
-        final response =
-            await http.post(Uri.parse('${_baseUrl}v2/loginPatient'), body: {
-          'email': data.name,
-          'password': data.password,
-        });
-        if (response.statusCode == 200) {
-          _apiResponse.Data = response.body;
-        } else {
-          _apiResponse.ApiError = "Invalid Credentials";
-          return 'Invalid Credentials';
+        try {
+          final response = await http.post(
+            Uri.parse('${_baseUrl}v2/loginPatient'),
+            body: {
+              'email': data.name,
+              'password': data.password,
+            },
+          );
+          if (response.statusCode == 200) {
+            _apiResponse.Data = response.body;
+          } else {
+            _apiResponse.ApiError = "Invalid Credentials";
+            return 'Invalid Credentials';
+          }
+          debugPrint(response.body);
+        } catch (e) {
+          return e.toString();
         }
-        debugPrint(response.body);
-      } catch (e) {
-        return e.toString();
-      }
-      return null;
-    });
+        return null;
+      },
+    );
   }
 
   Future<String?> _signupUser(SignupData data) {
     debugPrint('Signup Name: ${data.name}, Password: ${data.password}');
-    return Future.delayed(loginTime).then((_) async {
-      ApiResponse _apiResponse = ApiResponse();
+    return Future.delayed(loginTime).then(
+      (_) async {
+        ApiResponse _apiResponse = ApiResponse();
 
-      try {
-        final response =
-            await http.post(Uri.parse('${_baseUrl}v2/registerPatient'), body: {
-          'email': data.name,
-          'password': data.password,
-        });
-        if (response.statusCode == 200) {
-          _apiResponse.Data = response.body;
-        } else {
-          _apiResponse.ApiError = "Invalid Credentials";
-          return 'Invalid Credentials';
+        try {
+          final response = await http.post(
+            Uri.parse('${_baseUrl}v2/registerPatient'),
+            body: {
+              'email': data.name,
+              'password': data.password,
+            },
+          );
+          if (response.statusCode == 200) {
+            _apiResponse.Data = response.body;
+          } else {
+            _apiResponse.ApiError = "Invalid Credentials";
+            return 'Invalid Credentials';
+          }
+          debugPrint(response.body);
+        } catch (e) {
+          return e.toString();
         }
-        debugPrint(response.body);
-      } catch (e) {
-        return e.toString();
-      }
-      return null;
-    });
+        return null;
+      },
+    );
   }
 
   Future<String> _recoverPassword(String name) {
     debugPrint('Name: $name');
-    return Future.delayed(loginTime).then((_) {
-      // if (!users.containsKey(name)) {
-      //   return 'User not exists';
-      // }
-      return 'mock_password';
-    });
+    return Future.delayed(loginTime).then(
+      (_) {
+        // if (!users.containsKey(name)) {
+        //   return 'User not exists';
+        // }
+        return 'mock_password';
+      },
+    );
   }
 
   @override
@@ -84,6 +179,7 @@ class LoginScreen extends StatelessWidget {
       onLogin: _authUser,
       onSignup: _signupUser,
       onSubmitAnimationCompleted: () {
+        AppPermission().requestLocationPermission();
         Navigator.of(context).pushReplacement(MaterialPageRoute(
             builder: (context) => const KiranAppHomeScreen()));
       },
