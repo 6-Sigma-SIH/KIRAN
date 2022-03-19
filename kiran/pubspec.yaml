@@ -42,14 +42,9 @@ dependencies:
   flutter_login: ^3.2.0
   url_launcher: ^6.0.20
   table_calendar: ^3.0.4 
-<<<<<<< HEAD
-  progress_state_button: "^1.0.4"
-
-=======
   location: ^4.2.0
   permission_handler: ^9.2.0
   progress_state_button: ^1.0.4
->>>>>>> 7a40a3f45842a36a5fc20e791973b0ecbce03aaa
 
 dev_dependencies:
   flutter_test:
