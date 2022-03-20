@@ -57,7 +57,9 @@ class AppPermission extends State<AppState> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    throw {requestLocationPermission(), requestStoragePermission()};
+    throw {
+      [requestLocationPermission(), requestStoragePermission()]
+    };
   }
 }
 
