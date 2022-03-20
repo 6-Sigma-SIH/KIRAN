@@ -13,6 +13,7 @@ import 'package:kiran/login_screen/login_screen.dart';
 import 'package:kiran/kiran_app/test/anxietyTest.dart';
 import 'package:kiran/profile/profile_edit_page.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:kiran/kiran_app/chat/chat.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -57,6 +58,7 @@ class MyApp extends StatelessWidget {
         '/anxiety': (context) => AnxietyTest(),
         '/depression': (context) => DepressionScreen(),
         '/adhd': (context) => AdhdTest(),
+        '/chat': (context) => Chat(),
         '/editProfile': (context) => EditProfileScreen(),
       },
     );
