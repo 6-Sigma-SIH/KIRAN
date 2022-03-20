@@ -19,7 +19,7 @@ class _TipsListViewState extends State<TipsListView>
   List<String> tipsListImage = <String>[
     'assets/kiran_app/yoga.png',
     'assets/kiran_app/meditation.png',
-    'assets/kiran_app/area3.png',
+    'assets/kiran_app/exercise.png',
     'assets/kiran_app/calm.png',
   ];
   List<String> tipsListTitle = <String>[
