@@ -186,40 +186,51 @@ class ProfileScreen extends StatelessWidget {
                       style: TextStyle(fontSize: 16, height: 1.4),
                     ),
                     const SizedBox(height: 50),
+                    Text(
+                      'Actions',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                     Divider(thickness: 1, color: KiranAppTheme.nearlyDarkBlue),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        OutlinedButton.icon(
-                          icon: Icon(
-                            Icons.logout,
-                            color: KiranAppTheme.nearlyWhite,
-                          ),
-                          label: Text(
-                            'Logout',
-                            style: TextStyle(
-                                fontSize: 18, color: KiranAppTheme.nearlyWhite),
-                          ),
-                          style: OutlinedButton.styleFrom(
-                            primary: KiranAppTheme.nearlyDarkBlue,
-                            backgroundColor: KiranAppTheme.nearlyDarkBlue,
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(10.0),
+                        Container(
+                          height: 48,
+                          child: OutlinedButton.icon(
+                            icon: Icon(
+                              Icons.logout,
+                              color: KiranAppTheme.nearlyWhite,
+                            ),
+                            label: Text(
+                              'Logout',
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  color: KiranAppTheme.nearlyWhite),
+                            ),
+                            style: OutlinedButton.styleFrom(
+                              primary: KiranAppTheme.nearlyDarkBlue,
+                              backgroundColor: Colors.red.withOpacity(0.9),
+                              shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10.0),
+                                ),
                               ),
                             ),
+                            onPressed: () async {
+                              SharedPreferences prefs =
+                                  await SharedPreferences.getInstance();
+                              await prefs.clear();
+                              debugPrint('logout aaaaaaaaaaaaaa');
+                              bool? a = prefs.getBool('KiranisLoggedIn');
+                              debugPrint(a.toString());
+                              Navigator.pushNamedAndRemoveUntil(context,
+                                  '/login', (Route<dynamic> route) => false);
+                            },
                           ),
-                          onPressed: () async {
-                            SharedPreferences prefs =
-                                await SharedPreferences.getInstance();
-                            await prefs.clear();
-                            debugPrint('logout aaaaaaaaaaaaaa');
-                            bool? a = prefs.getBool('KiranisLoggedIn');
-                            debugPrint(a.toString());
-                            Navigator.pushNamedAndRemoveUntil(context, '/login',
-                                (Route<dynamic> route) => false);
-                          },
                         ),
                       ],
                     ),

@@ -75,6 +75,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     style: TextStyle(
                       fontSize: 26,
                       fontWeight: FontWeight.bold,
+                      fontFamily: KiranAppTheme.fontName,
                     ),
                   ),
                 ),
