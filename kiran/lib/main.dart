@@ -11,6 +11,7 @@ import 'package:kiran/login_screen/login_screen.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:kiran/login_screen/login_screen.dart';
 import 'package:kiran/kiran_app/test/anxietyTest.dart';
+import 'package:kiran/kiran_app/screens/task_screen.dart';
 import 'package:kiran/profile/profile_edit_page.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:kiran/kiran_app/chat/chat.dart';
@@ -59,6 +60,7 @@ class MyApp extends StatelessWidget {
         '/depression': (context) => DepressionScreen(),
         '/adhd': (context) => AdhdTest(),
         '/chat': (context) => Chat(),
+        '/notes': (context) => Notes(),
         '/editProfile': (context) => EditProfileScreen(),
       },
     );

@@ -135,82 +135,83 @@ class ContactView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: BoxDecoration(
-          color: KiranAppTheme.white,
-          borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(8.0),
-              bottomLeft: Radius.circular(8.0),
-              bottomRight: Radius.circular(8.0),
-              topRight: Radius.circular(8.0)),
-          boxShadow: <BoxShadow>[
-            BoxShadow(
-                color: KiranAppTheme.grey.withOpacity(0.4),
-                offset: const Offset(1.1, 1.1),
-                blurRadius: 10.0),
-          ],
-        ),
-        child: Material(
-          color: Colors.transparent,
-          child: InkWell(
-            focusColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            hoverColor: Colors.transparent,
-            borderRadius: const BorderRadius.all(Radius.circular(8.0)),
-            splashColor: KiranAppTheme.nearlyDarkBlue.withOpacity(0.2),
-            onTap: () {
-              UrlLauncher.launch("tel:$phone_number");
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(6),
-              child: Column(
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8, left: 6, right: 6),
-                    child: Text(
-                      title!,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontFamily: KiranAppTheme.fontName,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 18,
-                        letterSpacing: 0.1,
-                        color: KiranAppTheme.darkerText,
-                      ),
+      decoration: BoxDecoration(
+        color: KiranAppTheme.white,
+        borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(8.0),
+            bottomLeft: Radius.circular(8.0),
+            bottomRight: Radius.circular(8.0),
+            topRight: Radius.circular(8.0)),
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+              color: KiranAppTheme.grey.withOpacity(0.4),
+              offset: const Offset(1.1, 1.1),
+              blurRadius: 10.0),
+        ],
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          focusColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          hoverColor: Colors.transparent,
+          borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+          splashColor: KiranAppTheme.nearlyDarkBlue.withOpacity(0.2),
+          onTap: () {
+            UrlLauncher.launch("tel:$phone_number");
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(6),
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(top: 8, left: 6, right: 6),
+                  child: Text(
+                    title!,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: KiranAppTheme.fontName,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 18,
+                      letterSpacing: 0.1,
+                      color: KiranAppTheme.darkerText,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8, left: 6, right: 6),
-                    child: Text(
-                      description!,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontFamily: KiranAppTheme.fontName,
-                        fontWeight: FontWeight.w300,
-                        fontSize: 14,
-                        letterSpacing: 0.1,
-                        color: KiranAppTheme.darkerText,
-                      ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 8, left: 6, right: 6),
+                  child: Text(
+                    description!,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: KiranAppTheme.fontName,
+                      fontWeight: FontWeight.w300,
+                      fontSize: 14,
+                      letterSpacing: 0.1,
+                      color: KiranAppTheme.darkerText,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8, left: 6, right: 6),
-                    child: Text(
-                      availability!,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontFamily: KiranAppTheme.fontName,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 14,
-                        fontStyle: FontStyle.italic,
-                        letterSpacing: 0.1,
-                        color: KiranAppTheme.darkerText,
-                      ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 8, left: 6, right: 6),
+                  child: Text(
+                    availability!,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: KiranAppTheme.fontName,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                      fontStyle: FontStyle.italic,
+                      letterSpacing: 0.1,
+                      color: KiranAppTheme.darkerText,
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
