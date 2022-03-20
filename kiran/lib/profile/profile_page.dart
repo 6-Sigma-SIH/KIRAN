@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:kiran/kiran_app/kiran_app_home_screen.dart';
 import 'package:kiran/kiran_app/kiran_app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:kiran/login_screen/login_screen.dart';
 import 'package:kiran/profile/profile_widget/numbers_widget.dart';
 import 'package:kiran/profile/profile_widget/profile_widget.dart';
 import 'package:kiran/kiran_app/contact/contact_screen.dart';
@@ -208,7 +209,7 @@ class ProfileScreen extends StatelessWidget {
                             ),
                           ),
                           onPressed: () {
-                            Navigator.pushNamed(context, '/login');
+                            Navigator.pushReplacementNamed(context, '/login');
                           },
                         ),
                       ],
