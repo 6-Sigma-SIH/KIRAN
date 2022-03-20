@@ -9,22 +9,27 @@ import 'package:kiran/login_screen/api_response.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 
 class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({Key? key}) : super(key: key);
+  var data;
+
+  RegisterScreen({Key? key, required this.data}) : super(key: key);
 
   @override
-  State<RegisterScreen> createState() => _RegisterScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState(data: data);
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  _RegisterScreenState({this.data});
+  var data;
+
   final String _baseUrl = "https://apiv2kiranapp.herokuapp.com/";
   final List<String> _genders = ['Male', 'Female', 'Other'];
-  String? _selectedGender = 'Male';
-  late String firstName = 'Name';
-  late String lastName = 'Name';
-  late String email = 'manankarani@gmail.com';
-  late String password = 'manan';
-  late String phone = '+917021956350';
-  late String age = '18';
+  String? _selectedGender = '';
+  String firstName = '';
+  String lastName = '';
+  String phone = '';
+  String age = '';
+  late String email = data.name;
+  late String password = data.password;
 
   @override
   Widget build(BuildContext context) {
@@ -60,15 +65,23 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         child: TextFieldWidget(
                           label: 'First Name',
                           text: firstName,
-                          onChanged: (name) {},
+                          onChanged: (firstName) {
+                            setState(() {
+                              this.firstName = firstName;
+                            });
+                          },
                         ),
                       ),
-                      const SizedBox(width: 15),
+                      const SizedBox(width: 4),
                       Expanded(
                         child: TextFieldWidget(
                           label: 'Last Name',
                           text: lastName,
-                          onChanged: (name) {},
+                          onChanged: (lastName) {
+                            setState(() {
+                              this.lastName = lastName;
+                            });
+                          },
                         ),
                       ),
                     ],
@@ -77,15 +90,23 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 const SizedBox(height: 24),
                 TextFieldWidget(
                   label: 'Email',
-                  text: 'manankarani@gmail.com',
-                  onChanged: (email) {},
+                  text: email,
+                  onChanged: (email) {
+                    setState(() {
+                      this.email = email;
+                    });
+                  },
                 ),
                 const SizedBox(height: 24),
                 TextFieldWidget(
                   keyboardInputType: TextInputType.number,
                   label: 'Phone Number',
                   text: phone,
-                  onChanged: (phone) {},
+                  onChanged: (phone) {
+                    setState(() {
+                      this.phone = phone;
+                    });
+                  },
                 ),
                 const SizedBox(height: 24),
                 SizedBox(
@@ -118,7 +139,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 //Add more decoration as you want here
                                 //Add label If you want but add hint outside the decoration to be aligned in the button perfectly.
                               ),
-                              isExpanded: true,
+                              isExpanded: false,
                               hint: const Text(
                                 'Gender',
                                 style: TextStyle(fontSize: 14),
@@ -152,6 +173,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               },
                               onChanged: (value) {
                                 //Do something when changing the item if you want.
+                                setState(() {
+                                  _selectedGender = value.toString();
+                                });
                               },
                               onSaved: (value) {
                                 _selectedGender = value.toString();
@@ -166,7 +190,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           keyboardInputType: TextInputType.number,
                           label: 'Age',
                           text: age,
-                          onChanged: (name) {},
+                          onChanged: (age) {
+                            setState(() {
+                              this.age = age;
+                            });
+                          },
                         ),
                       ),
                     ],
@@ -174,55 +202,61 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 const SizedBox(height: 24),
                 ProgressButton.icon(
-                    iconedButtons: {
-                      ButtonState.idle: const IconedButton(
-                        text: "Register",
-                        icon: Icon(Icons.done, color: Colors.white),
-                        color: KiranAppTheme.nearlyDarkBlue,
-                      ),
-                      ButtonState.loading: const IconedButton(
-                          text: "Loading", color: KiranAppTheme.nearlyBlue),
-                      ButtonState.fail: IconedButton(
-                          text: "Failed",
-                          icon: const Icon(Icons.cancel, color: Colors.white),
-                          color: Colors.red.shade300),
-                      ButtonState.success: IconedButton(
-                          text: "Success",
-                          icon: const Icon(
-                            Icons.check_circle,
-                            color: Colors.white,
-                          ),
-                          color: Colors.green.shade400)
-                    },
-                    onPressed: () async {
-                      print("Here");
-                      ApiResponse _apiResponse = ApiResponse();
+                  iconedButtons: {
+                    ButtonState.idle: const IconedButton(
+                      text: "Register",
+                      icon: Icon(Icons.done, color: Colors.white),
+                      color: KiranAppTheme.nearlyDarkBlue,
+                    ),
+                    ButtonState.loading: const IconedButton(
+                        text: "Loading", color: KiranAppTheme.nearlyBlue),
+                    ButtonState.fail: IconedButton(
+                        text: "Failed",
+                        icon: const Icon(Icons.cancel, color: Colors.white),
+                        color: Colors.red.shade300),
+                    ButtonState.success: IconedButton(
+                        text: "Success",
+                        icon: const Icon(
+                          Icons.check_circle,
+                          color: Colors.white,
+                        ),
+                        color: Colors.green.shade400)
+                  },
+                  onPressed: () async {
+                    print("Here");
+                    ApiResponse _apiResponse = ApiResponse();
 
-                      try {
-                        final response = await http.post(
-                            Uri.parse('${_baseUrl}v2/registerPatient'),
-                            body: {
-                              "firstName": firstName,
-                              "lastName": lastName,
-                              "age": age,
-                              "gender": _selectedGender,
-                              "password": password,
-                              "phoneNo": phone,
-                              "email": email,
-                            });
-                        if (response.statusCode == 200) {
-                          _apiResponse.Data = response.body;
-                          Navigator.of(context).popAndPushNamed('/');
-                        } else {
-                          _apiResponse.ApiError = "Invalid Credentials";
-                          return 'Invalid Credentials';
-                        }
+                    try {
+                      final data = {
+                        "firstName": firstName,
+                        "lastName": lastName,
+                        "age": age,
+                        "gender": _selectedGender,
+                        "password": password,
+                        "phoneNo": phone,
+                        "email": email,
+                      };
+                      debugPrint(data.toString());
+                      final response = await http.post(
+                          Uri.parse('${_baseUrl}v2/registerPatient'),
+                          body: data);
+                      if (response.statusCode == 200) {
+                        _apiResponse.Data = response.body;
                         debugPrint(response.body);
-                      } catch (e) {
-                        return e.toString();
+                        Navigator.of(context).popAndPushNamed('/');
+                      } else {
+                        _apiResponse.ApiError = "Invalid Credentials";
+                        debugPrint(response.body);
+                        return 'Invalid Credentials';
                       }
-                    },
-                    state: ButtonState.idle)
+                      debugPrint(response.body);
+                    } catch (e) {
+                      debugPrint(e.toString());
+                      return e.toString();
+                    }
+                  },
+                  state: ButtonState.idle,
+                )
               ],
             ),
           ),

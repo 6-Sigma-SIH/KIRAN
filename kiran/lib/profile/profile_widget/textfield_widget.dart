@@ -49,6 +49,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
           TextField(
             keyboardType: widget.keyboardInputType ?? TextInputType.text,
             controller: controller,
+            onChanged: widget.onChanged,
             decoration: InputDecoration(
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),

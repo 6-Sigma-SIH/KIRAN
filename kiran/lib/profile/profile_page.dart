@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:kiran/kiran_app/kiran_app_home_screen.dart';
 import 'package:kiran/kiran_app/kiran_app_theme.dart';
@@ -8,6 +9,7 @@ import 'package:kiran/login_screen/login_screen.dart';
 import 'package:kiran/profile/profile_widget/numbers_widget.dart';
 import 'package:kiran/profile/profile_widget/profile_widget.dart';
 import 'package:kiran/kiran_app/contact/contact_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 String firstName = "Manan";
 String lastName = "Kumar";
@@ -208,8 +210,15 @@ class ProfileScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          onPressed: () {
-                            Navigator.pushReplacementNamed(context, '/login');
+                          onPressed: () async {
+                            SharedPreferences prefs =
+                                await SharedPreferences.getInstance();
+                            await prefs.clear();
+                            debugPrint('logout aaaaaaaaaaaaaa');
+                            bool? a = prefs.getBool('KiranisLoggedIn');
+                            debugPrint(a.toString());
+                            Navigator.pushNamedAndRemoveUntil(context, '/login',
+                                (Route<dynamic> route) => false);
                           },
                         ),
                       ],

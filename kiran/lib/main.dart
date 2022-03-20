@@ -13,7 +13,20 @@ import 'package:kiran/kiran_app/test/anxietyTest.dart';
 import 'package:kiran/kiran_app/screens/task_screen.dart';
 import 'package:kiran/profile/profile_edit_page.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:kiran/kiran_app/chat/chat.dart';
+
+Future<String> initRoute() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  var status = prefs.getBool('KiranisLoggedIn') ?? false;
+  if (status) {
+    debugPrint('Logged in: $status');
+    return '/';
+  } else {
+    debugPrint('Not Logged in: $status');
+    return '/login';
+  }
+}
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,11 +36,21 @@ void main() async {
       DeviceOrientation.portraitDown
     ]),
     initializeDateFormatting()
-  ]).then((_) => runApp(const MyApp()));
+  ]).then((_) {
+    initRoute().then((route) {
+      debugPrint('aaaaaaaaa Route: $route');
+      runApp(
+        MyApp(
+          initialRoute: route,
+        ),
+      );
+    });
+  });
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({Key? key, required this.initialRoute}) : super(key: key);
+  final String? initialRoute;
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +65,7 @@ class MyApp extends StatelessWidget {
         systemNavigationBarIconBrightness: Brightness.dark,
       ),
     );
+
     return MaterialApp(
       title: 'Kiran App',
       debugShowCheckedModeBanner: false,
@@ -50,7 +74,7 @@ class MyApp extends StatelessWidget {
         textTheme: AppTheme.textTheme,
         platform: TargetPlatform.iOS,
       ),
-      initialRoute: '/login',
+      initialRoute: initialRoute,
       routes: {
         '/': (context) => KiranAppHomeScreen(),
         '/login': (context) => LoginScreen(),

@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:kiran/kiran_app/kiran_app_theme.dart';
 import 'package:kiran/login_screen/register_screen.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 // const users = {
 //   'dribbble@gmail.com': '12345',
@@ -62,7 +63,7 @@ class AppPermission extends State<AppState> {
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
-
+  SignupData? signupData;
   Duration get loginTime => const Duration(milliseconds: 2250);
   bool pushRegisterScreen = false;
   Future<String?> _authUser(LoginData data) async {
@@ -97,6 +98,7 @@ class LoginScreen extends StatelessWidget {
   Future<String?> _signupUser(SignupData data) async {
     debugPrint('Signup Name: ${data.name}, Password: ${data.password}');
     pushRegisterScreen = true;
+    signupData = data;
     return Future.delayed(loginTime).then(
       (_) async {},
     );
@@ -121,13 +123,15 @@ class LoginScreen extends StatelessWidget {
       // logo: AssetImage('assets/images/ecorp-lightblue.png'),
       onLogin: _authUser,
       onSignup: _signupUser,
-      onSubmitAnimationCompleted: () {
+      onSubmitAnimationCompleted: () async {
         AppPermission().requestLocationPermission();
         AppPermission().requestStoragePermission();
         if (pushRegisterScreen) {
-          Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => RegisterScreen()));
+          Navigator.of(context).pushReplacement(MaterialPageRoute(
+              builder: (context) => RegisterScreen(data: signupData)));
         } else {
+          SharedPreferences prefs = await SharedPreferences.getInstance();
+          prefs.setBool("KiranisLoggedIn", true);
           Navigator.of(context).pushReplacement(MaterialPageRoute(
               builder: (context) => const KiranAppHomeScreen()));
         }
