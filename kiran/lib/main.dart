@@ -9,10 +9,8 @@ import 'package:kiran/kiran_app/test/adhdTest.dart';
 import 'package:kiran/kiran_app/test/depressionTest.dart';
 import 'package:kiran/login_screen/login_screen.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
-import 'package:kiran/login_screen/login_screen.dart';
 import 'package:kiran/kiran_app/test/anxietyTest.dart';
 import 'package:kiran/profile/profile_edit_page.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
