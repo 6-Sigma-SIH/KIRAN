@@ -203,7 +203,7 @@ class ProfileScreen extends StatelessWidget {
                             backgroundColor: KiranAppTheme.nearlyDarkBlue,
                             shape: const RoundedRectangleBorder(
                               borderRadius: BorderRadius.all(
-                                Radius.circular(20.0),
+                                Radius.circular(10.0),
                               ),
                             ),
                           ),
