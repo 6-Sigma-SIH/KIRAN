@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:kiran/kiran_app/kiran_app_theme.dart';
 
 class TestOptionButton extends StatelessWidget {
-  const TestOptionButton({
-    Key? key,
-    required this.optionText,
-    this.score,
-  }) : super(key: key);
+  const TestOptionButton(
+      {Key? key, required this.optionText, this.score, this.onPressed})
+      : super(key: key);
   final String? optionText;
   final int? score;
+  final Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +36,7 @@ class TestOptionButton extends StatelessWidget {
               ),
             ),
           ),
-          onPressed: () {
-            // add the points to the final score
-          },
+          onPressed: onPressed,
         ),
       ),
     );

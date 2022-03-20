@@ -3,6 +3,7 @@ import 'package:kiran/kiran_app/kiran_app_theme.dart';
 import 'package:kiran/kiran_app/test/question_widget.dart';
 import 'package:kiran/kiran_app/test/testOption_widget.dart';
 import 'package:kiran/kiran_app/test/testTitle_widget.dart';
+import 'package:kiran/kiran_app/diagnosis/diagnosis.dart';
 
 List<String> adhdQuestions = <String>[
   'How often do you have trouble wrapping up the final details of a project, once the challenging parts have been done?',
@@ -33,8 +34,26 @@ List<String> adhdOptions = <String>[
   'Very Often',
 ];
 
-class AdhdTest extends StatelessWidget {
+List<int> adhdScore = <int>[
+  0,
+  1,
+  2,
+  3,
+  4,
+];
+
+class AdhdTest extends StatefulWidget {
   @override
+  State<AdhdTest> createState() => _AdhdTestState();
+}
+
+class _AdhdTestState extends State<AdhdTest> {
+  @override
+  int totalScore = 0;
+
+  String currentQuestion = adhdQuestions[0];
+  int currentQuestionIndex = 1;
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
@@ -43,11 +62,12 @@ class AdhdTest extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
+              // ignore: prefer_const_constructors
               TestTitle(
-                testTitle: 'ADHD',
+                testTitle: 'ADHD Assessment',
               ),
               QuestionText(
-                questionText: adhdQuestions[2],
+                questionText: currentQuestion,
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -58,7 +78,26 @@ class AdhdTest extends StatelessWidget {
                       for (int i = 0; i < adhdOptions.length; i++)
                         TestOptionButton(
                           optionText: adhdOptions[i],
-                          score: i,
+                          score: adhdScore[i],
+                          onPressed: () {
+                            if (currentQuestionIndex == adhdQuestions.length) {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => DiagnosisScreen(
+                                            assessmentTitle: 'ADHD',
+                                            assessmentScore: totalScore,
+                                            diagnosisTitle: 'ADHD',
+                                            diagnosisDescription: '',
+                                          )));
+                            } else {
+                              totalScore += adhdScore[i];
+                              setState(() {
+                                currentQuestion = adhdQuestions[i + 1];
+                                currentQuestionIndex++;
+                              });
+                            }
+                          },
                         ),
                     ],
                   ),
@@ -73,7 +112,7 @@ class AdhdTest extends StatelessWidget {
                       color: KiranAppTheme.nearlyDarkBlue,
                     ),
                     Text(
-                      "12/15",
+                      "$currentQuestionIndex / ${adhdQuestions.length}",
                       style: KiranAppTheme.questions,
                       //textAlign: TextAlign.center,
                     ),

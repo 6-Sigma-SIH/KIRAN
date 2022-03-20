@@ -1,3 +1,4 @@
+import 'package:kiran/kiran_app/diagnosis/diagnosis.dart';
 import 'package:kiran/kiran_app/kiran_app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:kiran/kiran_app/test/question_widget.dart';
@@ -21,7 +22,23 @@ List<String> anxietyOptions = <String>[
   'Nearly every day',
 ];
 
-class AnxietyTest extends StatelessWidget {
+List<int> anxietyScore = <int>[
+  0,
+  1,
+  2,
+  3,
+];
+
+class AnxietyTest extends StatefulWidget {
+  @override
+  State<AnxietyTest> createState() => _AnxietyTestState();
+}
+
+class _AnxietyTestState extends State<AnxietyTest> {
+  int totalScore = 0;
+  String currentQuestion = anxietyQuestions[0];
+  int currentQuestionIndex = 1;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,11 +48,12 @@ class AnxietyTest extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
+              // ignore: prefer_const_constructors
               TestTitle(
-                testTitle: 'Anxiety',
+                testTitle: 'Anxiety Assessment',
               ),
               QuestionText(
-                questionText: anxietyQuestions[2],
+                questionText: currentQuestion,
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -46,7 +64,29 @@ class AnxietyTest extends StatelessWidget {
                       for (int i = 0; i < anxietyOptions.length; i++)
                         TestOptionButton(
                           optionText: anxietyOptions[i],
-                          score: i,
+                          score: anxietyScore[i],
+                          onPressed: () {
+                            if (currentQuestionIndex ==
+                                anxietyQuestions.length) {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => DiagnosisScreen(
+                                    assessmentTitle: 'Anxiety',
+                                    assessmentScore: totalScore,
+                                    diagnosisTitle: 'Anxiety',
+                                    diagnosisDescription: '',
+                                  ),
+                                ),
+                              );
+                            } else {
+                              totalScore += anxietyScore[i];
+                              setState(() {
+                                currentQuestion = anxietyQuestions[i + 1];
+                                currentQuestionIndex++;
+                              });
+                            }
+                          },
                         ),
                     ],
                   ),
@@ -61,7 +101,7 @@ class AnxietyTest extends StatelessWidget {
                       color: KiranAppTheme.nearlyDarkBlue,
                     ),
                     Text(
-                      "12/15",
+                      "$currentQuestionIndex / ${anxietyQuestions.length}",
                       style: KiranAppTheme.questions,
                       //textAlign: TextAlign.center,
                     ),

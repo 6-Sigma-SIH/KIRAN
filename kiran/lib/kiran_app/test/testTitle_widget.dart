@@ -13,7 +13,7 @@ class TestTitle extends StatelessWidget {
     return Column(
       children: <Widget>[
         Text(
-          '$testTitle Assessment',
+          '$testTitle',
           style: TextStyle(
             fontSize: 26,
             fontWeight: FontWeight.bold,
