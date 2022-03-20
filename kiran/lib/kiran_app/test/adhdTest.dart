@@ -54,13 +54,12 @@ class AdhdTest extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Column(
-                    children: [
-                      TestOptionButton(
-                          optionText: "Strongly Disagree", score: 1),
-                      TestOptionButton(optionText: "Disagree", score: 2),
-                      TestOptionButton(optionText: "Neutral", score: 3),
-                      TestOptionButton(optionText: "Agree", score: 4),
-                      TestOptionButton(optionText: "Strongly Agree", score: 5),
+                    children: <Widget>[
+                      for (int i = 0; i < adhdOptions.length; i++)
+                        TestOptionButton(
+                          optionText: adhdOptions[i],
+                          score: i,
+                        ),
                     ],
                   ),
                 ],
