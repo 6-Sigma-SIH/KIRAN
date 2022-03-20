@@ -1,6 +1,5 @@
 import 'package:kiran/kiran_app/models/tabIcon_data.dart';
 import 'package:kiran/kiran_app/contact/contact_screen.dart';
-import 'package:kiran/kiran_app/chat/chat.dart';
 import 'package:kiran/kiran_app/personal_tracker/tracker_screen.dart';
 import 'package:flutter/material.dart';
 import '../profile/profile_page.dart';

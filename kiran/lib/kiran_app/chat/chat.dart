@@ -43,7 +43,7 @@ class _ChatState extends State<Chat> {
   late StreamSubscription<List<int>> _audioStreamSubscription;
   late BehaviorSubject<List<int>> _audioStream;
 
-  // TODO DialogflowGrpc class instance
+  // DialogflowGrpc class instance
   late DialogflowGrpcV2Beta1 dialogflow;
 
   @override
@@ -70,7 +70,6 @@ class _ChatState extends State<Chat> {
 
     await Future.wait([_recorder.initialize()]);
 
-    // TODO Get a Service account
     // Get a Service account
     final serviceAccount = ServiceAccount.fromString(
         '${(await rootBundle.loadString('assets/credentials.json'))}');
@@ -88,7 +87,7 @@ class _ChatState extends State<Chat> {
     print(text);
     _textController.clear();
 
-    //TODO Dialogflow Code
+    //Dialogflow Code
     ChatMessage message = ChatMessage(
       text: text,
       name: "You",
@@ -123,7 +122,7 @@ class _ChatState extends State<Chat> {
       _audioStream.add(data);
     });
 
-    // TODO Create SpeechContexts
+    // SpeechContexts
     // Create an audio InputConfig
     var biasList = SpeechContextV2Beta1(phrases: [
       'Dialogflow CX',
@@ -140,11 +139,10 @@ class _ChatState extends State<Chat> {
         singleUtterance: false,
         speechContexts: [biasList]);
 
-    // TODO Make the streamingDetectIntent call, with the InputConfig and the audioStream
+    // StreamingDetectIntent call, with the InputConfig and the audioStream
     final responseStream =
         dialogflow.streamingDetectIntent(config, _audioStream);
 
-    // TODO Get the transcript and detectedIntent and show on screen
     // Get the transcript and detectedIntent and show on screen
     responseStream.listen((data) {
       //print('----');
