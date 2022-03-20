@@ -171,7 +171,9 @@ class _BottomBarViewState extends State<BottomBarView>
                           splashColor: Colors.white.withOpacity(0.1),
                           highlightColor: Colors.transparent,
                           focusColor: Colors.transparent,
-                          onTap: widget.addClick,
+                          onTap: () {
+                            Navigator.pushNamed(context, '/chat');
+                          },
                           child: const Icon(
                             Icons.chat,
                             color: KiranAppTheme.white,

@@ -1,20 +1,20 @@
-import 'package:kiran/kiran_app/ui_view/contact_list_view.dart';
-import 'package:kiran/kiran_app/ui_view/running_view.dart';
+import 'package:kiran/kiran_app/ui_view/tips_list_view.dart';
+import 'package:kiran/kiran_app/ui_view/motivation_view.dart';
 import 'package:kiran/kiran_app/ui_view/title_view.dart';
-import 'package:kiran/kiran_app/ui_view/workout_view.dart';
+import 'package:kiran/kiran_app/ui_view/diary_view.dart';
 import 'package:flutter/material.dart';
 
 import '../kiran_app_theme.dart';
 
-class TrainingScreen extends StatefulWidget {
-  const TrainingScreen({Key? key, this.animationController}) : super(key: key);
+class TrackerScreen extends StatefulWidget {
+  const TrackerScreen({Key? key, this.animationController}) : super(key: key);
 
   final AnimationController? animationController;
   @override
-  _TrainingScreenState createState() => _TrainingScreenState();
+  _TrackerScreenState createState() => _TrackerScreenState();
 }
 
-class _TrainingScreenState extends State<TrainingScreen>
+class _TrackerScreenState extends State<TrackerScreen>
     with TickerProviderStateMixin {
   Animation<double>? topBarAnimation;
 
@@ -60,7 +60,7 @@ class _TrainingScreenState extends State<TrainingScreen>
 
     listViews.add(
       TitleView(
-        titleTxt: 'Your program',
+        titleTxt: 'My Diary',
         subTxt: 'Details',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController!,
@@ -71,7 +71,7 @@ class _TrainingScreenState extends State<TrainingScreen>
     );
 
     listViews.add(
-      WorkoutView(
+      DiaryView(
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController!,
             curve: const Interval((1 / count) * 2, 1.0,
@@ -80,7 +80,7 @@ class _TrainingScreenState extends State<TrainingScreen>
       ),
     );
     listViews.add(
-      RunningView(
+      MotivationView(
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController!,
             curve: const Interval((1 / count) * 3, 1.0,
@@ -91,7 +91,7 @@ class _TrainingScreenState extends State<TrainingScreen>
 
     listViews.add(
       TitleView(
-        titleTxt: 'Area of focus',
+        titleTxt: 'Tips To Improve Your Health',
         subTxt: 'more',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController!,
@@ -102,7 +102,7 @@ class _TrainingScreenState extends State<TrainingScreen>
     );
 
     listViews.add(
-      AreaListView(
+      TipsListView(
         mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
             CurvedAnimation(
                 parent: widget.animationController!,
@@ -207,7 +207,7 @@ class _TrainingScreenState extends State<TrainingScreen>
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  'Training',
+                                  'Personal Tracker',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                     fontFamily: KiranAppTheme.fontName,
@@ -215,67 +215,6 @@ class _TrainingScreenState extends State<TrainingScreen>
                                     fontSize: 22 + 6 - 6 * topBarOpacity,
                                     letterSpacing: 1.2,
                                     color: KiranAppTheme.darkerText,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 38,
-                              width: 38,
-                              child: InkWell(
-                                highlightColor: Colors.transparent,
-                                borderRadius: const BorderRadius.all(
-                                    Radius.circular(32.0)),
-                                onTap: () {},
-                                child: const Center(
-                                  child: Icon(
-                                    Icons.keyboard_arrow_left,
-                                    color: KiranAppTheme.grey,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                left: 8,
-                                right: 8,
-                              ),
-                              child: Row(
-                                children: const <Widget>[
-                                  Padding(
-                                    padding: EdgeInsets.only(right: 8),
-                                    child: Icon(
-                                      Icons.calendar_today,
-                                      color: KiranAppTheme.grey,
-                                      size: 18,
-                                    ),
-                                  ),
-                                  Text(
-                                    '15 May',
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      fontFamily: KiranAppTheme.fontName,
-                                      fontWeight: FontWeight.normal,
-                                      fontSize: 18,
-                                      letterSpacing: -0.2,
-                                      color: KiranAppTheme.darkerText,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              height: 38,
-                              width: 38,
-                              child: InkWell(
-                                highlightColor: Colors.transparent,
-                                borderRadius: const BorderRadius.all(
-                                    Radius.circular(32.0)),
-                                onTap: () {},
-                                child: const Center(
-                                  child: Icon(
-                                    Icons.keyboard_arrow_right,
-                                    color: KiranAppTheme.grey,
                                   ),
                                 ),
                               ),
