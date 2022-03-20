@@ -49,6 +49,14 @@ class KiranAppTheme {
     color: darkerText,
   );
 
+  static const TextStyle questions = TextStyle(
+    fontFamily: fontName,
+    fontWeight: FontWeight.bold,
+    fontSize: 24,
+    letterSpacing: 0.27,
+    color: KiranAppTheme.nearlyDarkBlue,
+  );
+
   static const TextStyle title = TextStyle(
     fontFamily: fontName,
     fontWeight: FontWeight.bold,

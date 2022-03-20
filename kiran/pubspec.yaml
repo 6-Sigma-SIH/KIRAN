@@ -79,6 +79,7 @@ flutter:
       - assets/design_course/
       - assets/kiran_app/
       - assets/introduction_animation/
+      - assets/
   
   fonts:
         - family: WorkSans
