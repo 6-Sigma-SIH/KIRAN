@@ -81,7 +81,7 @@ class _ContactScreenState extends State<ContactScreen>
     );
 
     listViews.add(
-      AreaListView(
+      ContactListView(
         mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
             CurvedAnimation(
                 parent: widget.animationController!,

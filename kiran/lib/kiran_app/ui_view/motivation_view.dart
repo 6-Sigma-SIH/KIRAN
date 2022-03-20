@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import '../kiran_app_theme.dart';
 
-class RunningView extends StatelessWidget {
+class MotivationView extends StatelessWidget {
   final AnimationController? animationController;
   final Animation<double>? animation;
 
-  const RunningView({Key? key, this.animationController, this.animation})
+  const MotivationView({Key? key, this.animationController, this.animation})
       : super(key: key);
 
   @override

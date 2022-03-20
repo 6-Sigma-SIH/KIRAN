@@ -1,5 +1,6 @@
 import 'package:kiran/kiran_app/models/tabIcon_data.dart';
 import 'package:kiran/kiran_app/contact/contact_screen.dart';
+import 'package:kiran/kiran_app/personal_tracker/tracker_screen.dart';
 import 'package:flutter/material.dart';
 import '../profile/profile_page.dart';
 import 'bottom_navigation_view/bottom_bar_view.dart';
@@ -103,7 +104,7 @@ class _KiranAppHomeScreenState extends State<KiranAppHomeScreen>
                 }
                 setState(() {
                   tabBody =
-                      ContactScreen(animationController: animationController);
+                      TrackerScreen(animationController: animationController);
                 });
               });
             } else if (index == 2) {

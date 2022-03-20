@@ -2,11 +2,11 @@ import 'package:kiran/main.dart';
 import 'package:flutter/material.dart';
 import '../kiran_app_theme.dart';
 
-class WorkoutView extends StatelessWidget {
+class DiaryView extends StatelessWidget {
   final AnimationController? animationController;
   final Animation<double>? animation;
 
-  const WorkoutView({Key? key, this.animationController, this.animation})
+  const DiaryView({Key? key, this.animationController, this.animation})
       : super(key: key);
 
   @override
@@ -47,7 +47,7 @@ class WorkoutView extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       const Text(
-                        'Next workout',
+                        'Next Note',
                         textAlign: TextAlign.left,
                         style: TextStyle(
                           fontFamily: KiranAppTheme.fontName,
@@ -60,7 +60,7 @@ class WorkoutView extends StatelessWidget {
                       const Padding(
                         padding: EdgeInsets.only(top: 8.0),
                         child: Text(
-                          'Legs Toning and\nGlutes Workout at Home',
+                          'Peronal Diary',
                           textAlign: TextAlign.left,
                           style: TextStyle(
                             fontFamily: KiranAppTheme.fontName,
@@ -72,7 +72,7 @@ class WorkoutView extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(
-                        height: 32,
+                        height: 2,
                       ),
                       Padding(
                         padding: const EdgeInsets.only(right: 4),
@@ -80,28 +80,28 @@ class WorkoutView extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            const Padding(
-                              padding: EdgeInsets.only(left: 4),
-                              child: Icon(
-                                Icons.timer,
-                                color: KiranAppTheme.white,
-                                size: 16,
-                              ),
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.only(left: 4.0),
-                              child: Text(
-                                '68 min',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontFamily: KiranAppTheme.fontName,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 14,
-                                  letterSpacing: 0.0,
-                                  color: KiranAppTheme.white,
-                                ),
-                              ),
-                            ),
+                            // const Padding(
+                            //   padding: EdgeInsets.only(left: 4),
+                            //   child: Icon(
+                            //     Icons.timer,
+                            //     color: KiranAppTheme.white,
+                            //     size: 16,
+                            //   ),
+                            // ),
+                            // const Padding(
+                            //   padding: EdgeInsets.only(left: 4.0),
+                            //   child: Text(
+                            //     '68 min',
+                            //     textAlign: TextAlign.center,
+                            //     style: TextStyle(
+                            //       fontFamily: KiranAppTheme.fontName,
+                            //       fontWeight: FontWeight.w500,
+                            //       fontSize: 14,
+                            //       letterSpacing: 0.0,
+                            //       color: KiranAppTheme.white,
+                            //     ),
+                            //   ),
+                            // ),
                             const Expanded(
                               child: SizedBox(),
                             ),

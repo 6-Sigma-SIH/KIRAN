@@ -5,42 +5,42 @@ import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 
 import '../kiran_app_theme.dart';
 
-class AreaListView extends StatefulWidget {
-  const AreaListView(
+class ContactListView extends StatefulWidget {
+  const ContactListView(
       {Key? key, this.mainScreenAnimationController, this.mainScreenAnimation})
       : super(key: key);
 
   final AnimationController? mainScreenAnimationController;
   final Animation<double>? mainScreenAnimation;
   @override
-  _AreaListViewState createState() => _AreaListViewState();
+  _ContactListViewState createState() => _ContactListViewState();
 }
 
-class _AreaListViewState extends State<AreaListView>
+class _ContactListViewState extends State<ContactListView>
     with TickerProviderStateMixin {
   AnimationController? animationController;
-  List<String> areaListTitle = <String>[
+  List<String> contactListTitle = <String>[
     'KIRAN',
     'SUMAITRI',
     'SAHAI',
     'EXAM HELPLINE',
     'NIMHANS',
   ];
-  List<String> areaListDescription = <String>[
+  List<String> contactListDescription = <String>[
     'A national 24/7 toll free helpline launched by the Ministry of Social Justice and Empowerment to help people with suicidal thoughts, depression and other mental health issues.',
     'A crisis intervention centre for the depressed, distressed and suicidal. The Helpline provides unconditional and unbiased emotional support to callers, visitors or those who write in.',
     'A service by Medico Pastoral Association (MPA) run by trained active volunteers. For face to face counselling, they are referred to MPA counsellors who are fully trained.',
     'The number is for students or parents with queries related to stress, mental wellbeing, exam tips or even to consult a team of experts and behavioral psychologists.',
     'This is a helpline for anyone experiencing mental health distress during the COVID 19 crisis by National Institute of Mental Health & Neuro Sciences Bengaluru.',
   ];
-  List<String> areaListAvailability = <String>[
+  List<String> contactListAvailability = <String>[
     '24/7 Helpline',
     '24/7 Helpline',
     '24/7 Helpline',
     '24/7 Helpline',
     '24/7 Helpline',
   ];
-  List<String> areaListNumber = <String>[
+  List<String> contactListNumber = <String>[
     '1800-599-0019',
     '+91 1234567890',
     '+91 1234567890',
@@ -74,43 +74,39 @@ class _AreaListViewState extends State<AreaListView>
               30 * (1.0 - widget.mainScreenAnimation!.value),
               0.0,
             ),
-            child: Expanded(
-              flex: 1,
-              child: AspectRatio(
-                aspectRatio: 0.5,
-                child: Padding(
+            child: AspectRatio(
+              aspectRatio: 0.5,
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  left: 8.0,
+                  right: 8,
+                ),
+                child: GridView(
                   padding: const EdgeInsets.only(
-                    left: 8.0,
-                    right: 8,
+                    left: 12,
+                    right: 12,
+                    top: 12,
+                    bottom: 12,
                   ),
-                  child: GridView(
-                    padding: const EdgeInsets.only(
-                      left: 12,
-                      right: 12,
-                      top: 12,
-                      bottom: 12,
-                    ),
-                    physics: const BouncingScrollPhysics(),
-                    scrollDirection: Axis.vertical,
-                    children: List<Widget>.generate(
-                      areaListTitle.length,
-                      (int index) {
-                        animationController?.forward();
-                        return AreaView(
-                          title: areaListTitle[index],
-                          description: areaListDescription[index],
-                          phone_number: areaListNumber[index],
-                          availability: areaListAvailability[index],
-                        );
-                      },
-                    ),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 16.0,
-                      crossAxisSpacing: 16.0,
-                      childAspectRatio: 0.65,
-                    ),
+                  physics: const BouncingScrollPhysics(),
+                  scrollDirection: Axis.vertical,
+                  children: List<Widget>.generate(
+                    contactListTitle.length,
+                    (int index) {
+                      animationController?.forward();
+                      return ContactView(
+                        title: contactListTitle[index],
+                        description: contactListDescription[index],
+                        phone_number: contactListNumber[index],
+                        availability: contactListAvailability[index],
+                      );
+                    },
+                  ),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 16.0,
+                    crossAxisSpacing: 16.0,
+                    childAspectRatio: 0.65,
                   ),
                 ),
               ),
@@ -122,8 +118,8 @@ class _AreaListViewState extends State<AreaListView>
   }
 }
 
-class AreaView extends StatelessWidget {
-  const AreaView({
+class ContactView extends StatelessWidget {
+  const ContactView({
     Key? key,
     this.title,
     this.description,
