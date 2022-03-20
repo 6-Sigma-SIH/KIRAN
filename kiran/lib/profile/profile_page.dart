@@ -186,14 +186,6 @@ class ProfileScreen extends StatelessWidget {
                       style: TextStyle(fontSize: 16, height: 1.4),
                     ),
                     const SizedBox(height: 50),
-                    Text(
-                      'Actions',
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Divider(thickness: 1, color: KiranAppTheme.nearlyDarkBlue),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -213,7 +205,7 @@ class ProfileScreen extends StatelessWidget {
                             ),
                             style: OutlinedButton.styleFrom(
                               primary: KiranAppTheme.nearlyDarkBlue,
-                              backgroundColor: Colors.red.withOpacity(0.9),
+                              backgroundColor: KiranAppTheme.nearlyDarkBlue,
                               shape: const RoundedRectangleBorder(
                                 borderRadius: BorderRadius.all(
                                   Radius.circular(10.0),
