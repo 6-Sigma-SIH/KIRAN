@@ -9,12 +9,14 @@ import 'package:kiran/kiran_app/test/adhdTest.dart';
 import 'package:kiran/kiran_app/test/depressionTest.dart';
 import 'package:kiran/login_screen/login_screen.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
-import 'package:kiran/login_screen/login_screen.dart';
 import 'package:kiran/kiran_app/test/anxietyTest.dart';
 import 'package:kiran/kiran_app/screens/task_screen.dart';
 import 'package:kiran/profile/profile_edit_page.dart';
+<<<<<<< HEAD
+=======
 import 'package:permission_handler/permission_handler.dart';
 import 'package:kiran/kiran_app/chat/chat.dart';
+>>>>>>> 9921c91c6327ed35d3ebd34603a3660aec8bf572
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

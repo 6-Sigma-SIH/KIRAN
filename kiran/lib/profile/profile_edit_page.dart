@@ -3,7 +3,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:progress_state_button/iconed_button.dart';
 import 'package:progress_state_button/progress_button.dart';
-import 'package:kiran/profile/profile_widget/profile_widget.dart';
 import 'package:kiran/profile/profile_widget/textfield_widget.dart';
 import 'package:kiran/kiran_app/kiran_app_theme.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
