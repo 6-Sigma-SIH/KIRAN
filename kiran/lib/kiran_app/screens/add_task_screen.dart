@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:kiran/kiran_app/models/tasks.dart';
 import 'package:provider/provider.dart';
 import 'package:kiran/kiran_app/models/task_data.dart';
+import 'package:kiran/main.dart';
+import '../kiran_app_theme.dart';
 
 class AddTaskScreen extends StatelessWidget {
   @override
@@ -29,7 +31,7 @@ class AddTaskScreen extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 33.0,
-                color: Colors.lightBlueAccent,
+                color: KiranAppTheme.nearlyDarkBlue,
               ),
             ),
             TextField(
@@ -53,7 +55,7 @@ class AddTaskScreen extends StatelessWidget {
                 ),
                 style: TextButton.styleFrom(
                   primary: Colors.white,
-                  backgroundColor: Colors.lightBlueAccent,
+                  backgroundColor: KiranAppTheme.nearlyDarkBlue,
                 ),
                 onPressed: () {
                   Provider.of<TaskData>(context, listen: false)

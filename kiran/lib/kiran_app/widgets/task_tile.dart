@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors_in_immutables
 
 import 'package:flutter/material.dart';
+import '../kiran_app_theme.dart';
 
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_literals_to_create_immutables
 class TaskTile extends StatelessWidget {
@@ -27,7 +28,7 @@ class TaskTile extends StatelessWidget {
       ),
       trailing: Checkbox(
         value: isChecked,
-        activeColor: Colors.lightBlueAccent,
+        activeColor: KiranAppTheme.nearlyDarkBlue,
         onChanged: checkboxCallback,
       ),
     );
