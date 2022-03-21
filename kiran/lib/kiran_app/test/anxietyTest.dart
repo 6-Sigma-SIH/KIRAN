@@ -1,4 +1,5 @@
 import 'package:kiran/kiran_app/diagnosis/diagnosis.dart';
+import 'package:kiran/kiran_app/diagnosis/diagnosis_brain.dart';
 import 'package:kiran/kiran_app/kiran_app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:kiran/kiran_app/test/question_widget.dart';
@@ -28,6 +29,9 @@ List<int> anxietyScore = <int>[
   2,
   3,
 ];
+
+String anxietyResult = '';
+String anxietyInterpretation = '';
 
 class AnxietyTest extends StatefulWidget {
   @override
@@ -68,21 +72,27 @@ class _AnxietyTestState extends State<AnxietyTest> {
                           onPressed: () {
                             if (currentQuestionIndex ==
                                 anxietyQuestions.length) {
+                              DiagnosisBrain diagnosisBrain =
+                                  DiagnosisBrain(totalScore: totalScore);
+                              anxietyResult = diagnosisBrain.getAnxietyResult();
+                              anxietyInterpretation =
+                                  diagnosisBrain.getAnxietyInterpretation();
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => DiagnosisScreen(
                                     assessmentTitle: 'Anxiety',
                                     assessmentScore: totalScore,
-                                    diagnosisTitle: 'Anxiety',
-                                    diagnosisDescription: '',
+                                    diagnosisTitle: anxietyResult,
+                                    diagnosisDescription: anxietyInterpretation,
                                   ),
                                 ),
                               );
                             } else {
                               totalScore += anxietyScore[i];
                               setState(() {
-                                currentQuestion = anxietyQuestions[i + 1];
+                                currentQuestion =
+                                    anxietyQuestions[currentQuestionIndex];
                                 currentQuestionIndex++;
                               });
                             }

@@ -4,6 +4,7 @@ import 'package:kiran/kiran_app/test/question_widget.dart';
 import 'package:kiran/kiran_app/test/testOption_widget.dart';
 import 'package:kiran/kiran_app/test/testTitle_widget.dart';
 import 'package:kiran/kiran_app/diagnosis/diagnosis.dart';
+import 'package:kiran/kiran_app/diagnosis/diagnosis_brain.dart';
 
 List<String> adhdQuestions = <String>[
   'How often do you have trouble wrapping up the final details of a project, once the challenging parts have been done?',
@@ -41,6 +42,9 @@ List<int> adhdScore = <int>[
   3,
   4,
 ];
+
+String adhdResult = '';
+String adhdInterpretation = '';
 
 class AdhdTest extends StatefulWidget {
   @override
@@ -81,19 +85,26 @@ class _AdhdTestState extends State<AdhdTest> {
                           score: adhdScore[i],
                           onPressed: () {
                             if (currentQuestionIndex == adhdQuestions.length) {
+                              DiagnosisBrain diagnosisBrain =
+                                  DiagnosisBrain(totalScore: totalScore);
+                              adhdResult = diagnosisBrain.getADHDResult();
+                              adhdInterpretation =
+                                  diagnosisBrain.getADHDInterpretation();
                               Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => DiagnosisScreen(
                                             assessmentTitle: 'ADHD',
                                             assessmentScore: totalScore,
-                                            diagnosisTitle: 'ADHD',
-                                            diagnosisDescription: '',
+                                            diagnosisTitle: adhdResult,
+                                            diagnosisDescription:
+                                                adhdInterpretation,
                                           )));
                             } else {
                               totalScore += adhdScore[i];
                               setState(() {
-                                currentQuestion = adhdQuestions[i + 1];
+                                currentQuestion =
+                                    adhdQuestions[currentQuestionIndex];
                                 currentQuestionIndex++;
                               });
                             }

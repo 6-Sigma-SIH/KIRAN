@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:kiran/kiran_app/test/question_widget.dart';
 import 'package:kiran/kiran_app/test/testOption_widget.dart';
 import 'package:kiran/kiran_app/test/testTitle_widget.dart';
+import 'package:kiran/kiran_app/diagnosis/diagnosis_brain.dart';
 
 List<String> depressionQuestions = <String>[
   'Little interest or pleasure in doing things',
@@ -30,6 +31,9 @@ List<int> depressionScore = <int>[
   2,
   3,
 ];
+
+String depressionResult = '';
+String depressionInterpretation = '';
 
 class DepressionScreen extends StatefulWidget {
   @override
@@ -72,19 +76,27 @@ class _DepressionScreenState extends State<DepressionScreen> {
                           onPressed: () {
                             if (currentQuestionIndex ==
                                 depressionQuestions.length) {
+                              DiagnosisBrain diagnosisBrain =
+                                  DiagnosisBrain(totalScore: totalScore);
+                              depressionResult =
+                                  diagnosisBrain.getDepressionResult();
+                              depressionInterpretation =
+                                  diagnosisBrain.getDepressionInterpretation();
                               Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => DiagnosisScreen(
                                             assessmentTitle: 'Depression',
                                             assessmentScore: totalScore,
-                                            diagnosisTitle: 'Depression',
-                                            diagnosisDescription: '',
+                                            diagnosisTitle: depressionResult,
+                                            diagnosisDescription:
+                                                depressionInterpretation,
                                           )));
                             } else {
                               totalScore += depressionScore[i];
                               setState(() {
-                                currentQuestion = depressionQuestions[i + 1];
+                                currentQuestion =
+                                    depressionQuestions[currentQuestionIndex];
                                 currentQuestionIndex++;
                               });
                             }

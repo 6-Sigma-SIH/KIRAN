@@ -5,8 +5,17 @@ import '../kiran_app_theme.dart';
 class DiaryView extends StatelessWidget {
   final AnimationController? animationController;
   final Animation<double>? animation;
+  final String subheading;
+  final String heading;
+  final Function()? onClick;
 
-  const DiaryView({Key? key, this.animationController, this.animation})
+  const DiaryView(
+      {Key? key,
+      required this.onClick,
+      this.animationController,
+      this.animation,
+      required this.subheading,
+      required this.heading})
       : super(key: key);
 
   @override
@@ -41,17 +50,15 @@ class DiaryView extends StatelessWidget {
                   ],
                 ),
                 child: InkWell(
-                  onTap: () {
-                    Navigator.pushNamed(context, '/notes');
-                  },
+                  onTap: onClick,
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        const Text(
-                          'Next Note',
+                        Text(
+                          '$subheading',
                           textAlign: TextAlign.left,
                           style: TextStyle(
                             fontFamily: KiranAppTheme.fontName,
@@ -61,10 +68,10 @@ class DiaryView extends StatelessWidget {
                             color: KiranAppTheme.white,
                           ),
                         ),
-                        const Padding(
+                        Padding(
                           padding: EdgeInsets.only(top: 8.0),
                           child: Text(
-                            'Peronal Diary',
+                            '$heading',
                             textAlign: TextAlign.left,
                             style: TextStyle(
                               fontFamily: KiranAppTheme.fontName,

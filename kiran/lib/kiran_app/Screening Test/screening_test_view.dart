@@ -136,7 +136,7 @@ class _TestingScreenState extends State<TestingScreen>
           testStatus: 70,
           lastOpened: '18/03/2022 14:50',
           score: 90,
-          questions: 30,
+          questions: 7,
         ),
       ),
     );
@@ -174,7 +174,7 @@ class _TestingScreenState extends State<TestingScreen>
           testStatus: 100,
           lastOpened: 'Today 14:50',
           score: 40,
-          questions: 20,
+          questions: 9,
         ),
       ),
     );

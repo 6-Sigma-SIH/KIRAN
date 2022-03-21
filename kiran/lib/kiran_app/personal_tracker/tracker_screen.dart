@@ -59,25 +59,20 @@ class _TrackerScreenState extends State<TrackerScreen>
     const int count = 5;
 
     listViews.add(
-      TitleView(
-        titleTxt: 'My Diary',
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController!,
-            curve: const Interval((1 / count) * 0, 1.0,
-                curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController!,
-      ),
-    );
-
-    listViews.add(
       DiaryView(
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController!,
             curve: const Interval((1 / count) * 2, 1.0,
                 curve: Curves.fastOutSlowIn))),
         animationController: widget.animationController!,
+        subheading: "Next Note",
+        heading: "Personal Diary",
+        onClick: () {
+          Navigator.pushNamed(context, '/notes');
+        },
       ),
     );
+
     listViews.add(
       MotivationView(
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
@@ -89,8 +84,23 @@ class _TrackerScreenState extends State<TrackerScreen>
     );
 
     listViews.add(
+      DiaryView(
+          animation: Tween<double>(begin: 0.0, end: 1.0).animate(
+              CurvedAnimation(
+                  parent: widget.animationController!,
+                  curve: const Interval((1 / count) * 2, 1.0,
+                      curve: Curves.fastOutSlowIn))),
+          animationController: widget.animationController!,
+          subheading: "View",
+          heading: "Previous Assesments",
+          onClick: () {
+            Navigator.pushNamed(context, '/previousAssessment');
+          }),
+    );
+
+    listViews.add(
       TitleView(
-        titleTxt: 'Tips To Improve Your Health',
+        titleTxt: 'Tips To Improve Your Mental Health',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController!,
             curve: const Interval((1 / count) * 4, 1.0,

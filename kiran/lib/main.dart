@@ -12,9 +12,9 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:kiran/kiran_app/test/anxietyTest.dart';
 import 'package:kiran/kiran_app/screens/task_screen.dart';
 import 'package:kiran/profile/profile_edit_page.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:kiran/kiran_app/chat/chat.dart';
+import 'package:kiran/kiran_app/personal_tracker/previous_assessment.dart';
 
 Future<String> initRoute() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -85,6 +85,7 @@ class MyApp extends StatelessWidget {
         '/chat': (context) => Chat(),
         '/notes': (context) => Notes(),
         '/editProfile': (context) => EditProfileScreen(),
+        '/previousAssessment': (context) => PreviousAssessment(),
       },
     );
   }

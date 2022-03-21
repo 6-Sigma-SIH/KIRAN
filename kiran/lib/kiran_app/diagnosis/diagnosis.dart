@@ -2,6 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:kiran/kiran_app/components/bottomButton.dart';
+import 'package:kiran/kiran_app/components/reusableCard.dart';
+import 'package:kiran/kiran_app/constants.dart';
 
 import '../kiran_app_theme.dart';
 import '../test/testTitle_widget.dart';
@@ -46,53 +49,87 @@ class _DiagnosisScreenState extends State<DiagnosisScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Expanded(
-          //color: KiranAppTheme.background,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              TestTitle(
-                testTitle: "$assessmentTitle Diagnosis",
-              ),
-              Center(
-                child: Container(
-                  margin: const EdgeInsets.all(15.0),
-                  padding: const EdgeInsets.all(3.0),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10.0),
-                    border: Border.all(color: KiranAppTheme.nearlyDarkBlue),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        Text(
-                          "$diagnosisTitle",
-                          style: TextStyle(
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        VerticalDivider(
-                          color: KiranAppTheme.nearlyDarkBlue,
-                        ),
-                        SizedBox(
-                          height: 10.0,
-                        ),
-                        Text(
-                          "$diagnosisDescription",
-                          style: TextStyle(
-                            fontSize: 15.0,
-                          ),
-                        ),
-                      ],
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Center(
+              child: Expanded(
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 10.0,
                     ),
-                  ),
+                    Container(
+                      padding: EdgeInsets.all(16.0),
+                      alignment: Alignment.bottomLeft,
+                      child: Center(
+                        child: Text(
+                          '$assessmentTitle',
+                          style: TextStyle(
+                            fontSize: 36.0,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              )
-            ],
-          ),
+              ),
+            ),
+            Expanded(
+              flex: 5,
+              child: ReusableCard(
+                colour: KiranAppTheme.background,
+                cardChild: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          bottom: 36.0, left: 12.0, right: 12.0),
+                      child: Text(
+                        '$diagnosisTitle',
+                        style: TextStyle(
+                          fontSize: 30.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          bottom: 36.0, left: 12.0, right: 12.0),
+                      child: Text(
+                        '$assessmentScore',
+                        style: TextStyle(
+                          fontSize: 28.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 12.0, right: 12.0),
+                      child: Text(
+                        '$diagnosisDescription',
+                        style: TextStyle(
+                          fontSize: 24.0,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ],
+                ),
+                onPress: () {},
+              ),
+            ),
+            BottomButton(
+              buttonTitle: 'Schedule Appointment',
+              onTap: () {
+                Navigator.pushNamed(context, '/calendar');
+              },
+            ),
+          ],
         ),
       ),
     );
