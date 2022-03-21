@@ -10,9 +10,13 @@ class PreviousAssessment extends StatefulWidget {
 class _PreviousAssessmentState extends State<PreviousAssessment> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text(
-        "Previous Assessment",
+    return Scaffold(
+      body: SafeArea(
+        child: Container(
+          child: Text(
+            "Previous Assessment",
+          ),
+        ),
       ),
     );
   }
