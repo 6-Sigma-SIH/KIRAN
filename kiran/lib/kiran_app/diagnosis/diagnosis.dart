@@ -1,4 +1,4 @@
-// ignore_for_file: no_logic_in_create_state
+// ignore_for_file: no_logic_in_create_state, unnecessary_string_interpolations, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -108,24 +108,26 @@ class _DiagnosisScreenState extends State<DiagnosisScreen> {
                     children: <Widget>[
                       Padding(
                         padding: const EdgeInsets.only(
-                            bottom: 36.0, left: 12.0, right: 12.0),
+                            bottom: 20.0, left: 12.0, right: 12.0),
                         child: Column(
                           children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.baseline,
+                              textBaseline: TextBaseline.alphabetic,
                               children: [
                                 Text(
                                   '$assessmentScore',
-                                  style: TextStyle(
-                                    fontSize: 60.0,
+                                  style: const TextStyle(
+                                    fontSize: 50.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                                   textAlign: TextAlign.center,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 5,
                                 ),
-                                Text(
+                                const Text(
                                   'Indicates',
                                   style: TextStyle(
                                     fontSize: 30.0,
@@ -144,8 +146,8 @@ class _DiagnosisScreenState extends State<DiagnosisScreen> {
                         child: Column(
                           children: <Widget>[
                             Text(
-                              '$diagnosisTitle',
-                              style: TextStyle(
+                              diagnosisTitle,
+                              style: const TextStyle(
                                 fontSize: 25.0,
                                 fontWeight: FontWeight.bold,
                                 color: KiranAppTheme.nearlyDarkBlue,
@@ -163,10 +165,10 @@ class _DiagnosisScreenState extends State<DiagnosisScreen> {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(
-                            bottom: 36.0, left: 12.0, right: 12.0),
+                            bottom: 24.0, left: 12.0, right: 12.0),
                         child: Text(
                           '$diagnosisDescription',
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 15.0,
                           ),
                           textAlign: TextAlign.center,
@@ -176,8 +178,9 @@ class _DiagnosisScreenState extends State<DiagnosisScreen> {
                         padding: const EdgeInsets.only(
                             bottom: 5.0, left: 12.0, right: 12.0),
                         child: Column(
+                          // ignore: prefer_const_literals_to_create_immutables
                           children: [
-                            Text(
+                            const Text(
                               'What to do next?',
                               style: TextStyle(
                                 fontSize: 25.0,
@@ -195,10 +198,10 @@ class _DiagnosisScreenState extends State<DiagnosisScreen> {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(
-                            bottom: 36.0, left: 12.0, right: 12.0),
+                            bottom: 24.0, left: 12.0, right: 12.0),
                         child: Text(
                           'Here are Some General Tips for managing $assessmentTitle : Take a time-out. Eat well-balanced meals. Get enough sleep.Exercise daily to help you feel good and maintain your health. Take deep breaths. Count to 10 slowly. ',
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 15.0,
                           ),
                           textAlign: TextAlign.center,
@@ -210,7 +213,7 @@ class _DiagnosisScreenState extends State<DiagnosisScreen> {
                         child: Column(
                           children: [
                             Text(
-                              'What to do next?',
+                              'Next Steps',
                               style: TextStyle(
                                 fontSize: 25.0,
                               ),
@@ -227,7 +230,7 @@ class _DiagnosisScreenState extends State<DiagnosisScreen> {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(
-                            bottom: 5.0, left: 12.0, right: 12.0),
+                            bottom: 10.0, left: 12.0, right: 12.0),
                         child: Text(
                           'You can click on the button below to schedule and appointment with our professionals. Meanwhile here are some links to help you get familiar with the condition:-',
                           style: TextStyle(
