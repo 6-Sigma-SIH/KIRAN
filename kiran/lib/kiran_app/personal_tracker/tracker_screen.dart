@@ -215,7 +215,7 @@ class _TrackerScreenState extends State<TrackerScreen>
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  'Personal Tracker',
+                                  'Progress Tracker',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                     fontFamily: KiranAppTheme.fontName,
