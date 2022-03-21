@@ -1,10 +1,12 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:draggable_fab/draggable_fab.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:kiran/kiran_app/kiran_app_home_screen.dart';
 import 'package:kiran/kiran_app/kiran_app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:kiran/profile/language_change.dart';
 import 'package:kiran/login_screen/login_screen.dart';
 import 'package:kiran/profile/profile_widget/numbers_widget.dart';
 import 'package:kiran/profile/profile_widget/profile_widget.dart';
@@ -14,7 +16,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 String firstName = "Manan";
 String lastName = "Kumar";
 int age = 20;
-var medicalDetails = "I have a heart problem";
+var medicalDetails = "I have performance anxiety disorder";
 String gender = "Male";
 int phoneNo = 9876543210;
 String email = "manankaarani@gmail.com";
@@ -28,6 +30,23 @@ class ProfileScreen extends StatelessWidget {
     return Container(
       child: Builder(
         builder: (context) => Scaffold(
+          floatingActionButton: DraggableFab(
+            child: Padding(
+              padding: const EdgeInsets.only(
+                bottom: 70,
+              ),
+              child: FloatingActionButton(
+                backgroundColor: KiranAppTheme.nearlyDarkBlue,
+                child: Icon(Icons.translate),
+                onPressed: () {
+                  showModalBottomSheet(
+                    context: context,
+                    builder: (BuildContext context) => ChangeLanguage(),
+                  );
+                },
+              ),
+            ),
+          ),
           body: ListView(
             physics: BouncingScrollPhysics(),
             children: [

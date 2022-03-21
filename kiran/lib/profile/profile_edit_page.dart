@@ -48,7 +48,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     String firstName = "Manan";
     String lastName = "Kumar";
     int age = 20;
-    var medicalDetails = "I have a heart problem";
+    var medicalDetails = "I have performance anxiety disorder";
     String gender = "Male";
     int phoneNo = 9876543210;
     String email = "manankaarani@gmail.com";
