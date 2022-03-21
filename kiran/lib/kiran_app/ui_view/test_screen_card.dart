@@ -106,7 +106,7 @@ class TestScreenCardView extends StatelessWidget {
                                     padding:
                                         EdgeInsets.only(left: 8, bottom: 8),
                                     child: Text(
-                                      'out of $score',
+                                      'Score',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         fontFamily: KiranAppTheme.fontName,

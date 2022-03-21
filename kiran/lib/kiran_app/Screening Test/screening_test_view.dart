@@ -2,6 +2,7 @@ import 'package:kiran/kiran_app/ui_view/test_screen_card.dart';
 import 'package:kiran/kiran_app/ui_view/title_view.dart';
 import 'package:kiran/kiran_app/kiran_app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class TestingScreen extends StatefulWidget {
   const TestingScreen({Key? key, this.animationController}) : super(key: key);
@@ -127,10 +128,10 @@ class _TestingScreenState extends State<TestingScreen>
           ),
           animationController: widget.animationController!,
           testTitle: 'Anxiety',
-          minTime: 20,
+          minTime: 3,
           testStatus: 70,
-          lastOpened: '18/03/2022 14:50',
-          score: 90,
+          lastOpened: "22-03-22",
+          score: 3,
           questions: 7,
         ),
       ),
@@ -165,10 +166,10 @@ class _TestingScreenState extends State<TestingScreen>
           ),
           animationController: widget.animationController!,
           testTitle: 'Depression',
-          minTime: 30,
+          minTime: 5,
           testStatus: 100,
-          lastOpened: 'Today 14:50',
-          score: 40,
+          lastOpened: "21-02-22",
+          score: 10,
           questions: 9,
         ),
       ),
@@ -203,10 +204,10 @@ class _TestingScreenState extends State<TestingScreen>
           ),
           animationController: widget.animationController!,
           testTitle: 'ADHD',
-          minTime: 10,
+          minTime: 20,
           testStatus: 100,
-          lastOpened: 'Today 14:50',
-          score: 20,
+          lastOpened: "20-02-22",
+          score: 24,
           questions: 18,
         ),
       ),
@@ -377,7 +378,7 @@ class _TestingScreenState extends State<TestingScreen>
                                         child: Icon(
                                           Icons.calendar_today,
                                           color: KiranAppTheme.grey,
-                                          size: 19,
+                                          size: 24,
                                         ),
                                       ),
                                     ),
