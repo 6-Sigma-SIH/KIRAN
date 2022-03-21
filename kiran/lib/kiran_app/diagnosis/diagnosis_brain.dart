@@ -38,7 +38,7 @@ class DiagnosisBrain {
   String getADHDResult() {
     if (totalScore >= 0 && totalScore <= 15) {
       return "ADHD not diagnosed";
-    } else if (totalScore > 15 && totalScore <= 2) {
+    } else if (totalScore > 15 && totalScore <= 72) {
       return "ADHD Diagnosed";
     } else {
       return "Error";
