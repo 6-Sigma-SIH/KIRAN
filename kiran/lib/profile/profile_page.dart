@@ -36,6 +36,7 @@ class ProfileScreen extends StatelessWidget {
                 bottom: 70,
               ),
               child: FloatingActionButton(
+                heroTag: 'lang',
                 backgroundColor: KiranAppTheme.nearlyDarkBlue,
                 child: Icon(Icons.translate),
                 onPressed: () {
@@ -67,6 +68,7 @@ class ProfileScreen extends StatelessWidget {
                       ),
                       SizedBox(width: 16),
                       FloatingActionButton(
+                        heroTag: 'editProfile',
                         onPressed: () {
                           print('Edit profile');
                           Navigator.pushNamed(context, '/editProfile');
