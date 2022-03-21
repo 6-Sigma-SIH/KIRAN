@@ -70,6 +70,8 @@ class _AnxietyTestState extends State<AnxietyTest> {
                           optionText: anxietyOptions[i],
                           score: anxietyScore[i],
                           onPressed: () {
+                            totalScore += anxietyScore[i];
+
                             if (currentQuestionIndex ==
                                 anxietyQuestions.length) {
                               DiagnosisBrain diagnosisBrain =
@@ -89,7 +91,6 @@ class _AnxietyTestState extends State<AnxietyTest> {
                                 ),
                               );
                             } else {
-                              totalScore += anxietyScore[i];
                               setState(() {
                                 currentQuestion =
                                     anxietyQuestions[currentQuestionIndex];

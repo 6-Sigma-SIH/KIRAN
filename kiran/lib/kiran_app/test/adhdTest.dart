@@ -84,6 +84,8 @@ class _AdhdTestState extends State<AdhdTest> {
                           optionText: adhdOptions[i],
                           score: adhdScore[i],
                           onPressed: () {
+                            totalScore += adhdScore[i];
+
                             if (currentQuestionIndex == adhdQuestions.length) {
                               DiagnosisBrain diagnosisBrain =
                                   DiagnosisBrain(totalScore: totalScore);
@@ -101,7 +103,6 @@ class _AdhdTestState extends State<AdhdTest> {
                                                 adhdInterpretation,
                                           )));
                             } else {
-                              totalScore += adhdScore[i];
                               setState(() {
                                 currentQuestion =
                                     adhdQuestions[currentQuestionIndex];

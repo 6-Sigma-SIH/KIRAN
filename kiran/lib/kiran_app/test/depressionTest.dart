@@ -74,6 +74,8 @@ class _DepressionScreenState extends State<DepressionScreen> {
                           optionText: depressionOptions[i],
                           score: depressionScore[i],
                           onPressed: () {
+                            totalScore += depressionScore[i];
+
                             if (currentQuestionIndex ==
                                 depressionQuestions.length) {
                               DiagnosisBrain diagnosisBrain =
@@ -93,7 +95,6 @@ class _DepressionScreenState extends State<DepressionScreen> {
                                                 depressionInterpretation,
                                           )));
                             } else {
-                              totalScore += depressionScore[i];
                               setState(() {
                                 currentQuestion =
                                     depressionQuestions[currentQuestionIndex];
