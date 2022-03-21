@@ -21,15 +21,15 @@ class DiagnosisBrain {
 
   String getAnxietyInterpretation() {
     if (totalScore >= 0 && totalScore <= 4) {
-      return "Interpretation of None to Minimal Anxiety";
+      return "Slight anxiety includes ocassional feelings of a sense of uneasiness or nervousness which are considered normal.";
     } else if (totalScore > 4 && totalScore <= 9) {
-      return "Interpretation of Mild Anxiety";
+      return "Mild anxiety can feel like a sense of uneasiness or nervousness. It tends to be when you have irritating symptoms that don't seem to go away, but that otherwise doesn't control you. ";
     } else if (totalScore > 9 && totalScore <= 12) {
       return "Interpretation of Moderate Anxiety";
     } else if (totalScore > 12 && totalScore <= 16) {
       return "Interpretation of Severe Anxiety";
     } else if (totalScore > 16 && totalScore <= 21) {
-      return "Interpretation of Extreme Anxiety";
+      return "Extreme Anxiety includes extreme feelings of fear or anxiety that are out of proportion to the actual threat. Examples include - Irrational fear or worry about different objects or situations, Avoiding the source of your fear or only enduring it with great anxiety.";
     } else {
       return "Error";
     }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kiran/kiran_app/kiran_app_theme.dart';
 
 class ReusableCard extends StatelessWidget {
   ReusableCard(
@@ -16,9 +17,14 @@ class ReusableCard extends StatelessWidget {
         child: cardChild,
         margin: EdgeInsets.all(15.0),
         decoration: BoxDecoration(
-          color: colour,
-          borderRadius: BorderRadius.circular(10.0),
-        ),
+            color: colour,
+            borderRadius: BorderRadius.circular(30.0),
+            boxShadow: [
+              BoxShadow(
+                color: KiranAppTheme.nearlyDarkBlue,
+                spreadRadius: 2.0,
+              ),
+            ]),
       ),
     );
   }
